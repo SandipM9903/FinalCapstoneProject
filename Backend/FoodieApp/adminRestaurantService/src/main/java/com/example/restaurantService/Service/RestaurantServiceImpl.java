@@ -2,12 +2,16 @@ package com.example.restaurantService.Service;
 
 import com.example.restaurantService.Exceptions.CuisineNotFoundException;
 import com.example.restaurantService.Exceptions.RestaurantNotFoundException;
-import com.example.restaurantService.Model.Cuisine;
-import com.example.restaurantService.Model.Restaurant;
+import com.example.restaurantService.Exceptions.UserAlreadyExistException;
+import com.example.restaurantService.Model.*;
+import com.example.restaurantService.Proxy.UserProxy;
 import com.example.restaurantService.Repository.RestaurantRepository;
+import com.example.restaurantService.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,6 +20,28 @@ public class RestaurantServiceImpl implements RestaurantService{
 
     @Autowired
     private RestaurantRepository restaurantRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    UserProxy userProxy;
+
+    @Override
+    public User registerAdmin(CommonUser commonUser) throws UserAlreadyExistException {
+        User user = new User(commonUser.getEmailId(), commonUser.getProfilePicture(), commonUser.getFirstName(), commonUser.getLastName(), commonUser.getRole(), commonUser.getPassword(), new ArrayList<>());
+
+        if (userRepository.findById(user.getEmailId()).isPresent())
+        {
+            throw new UserAlreadyExistException();
+        }
+
+        UserDTO userDTO = new UserDTO();
+        userDTO.setEmailId(commonUser.getEmailId());
+        userDTO.setPassword(commonUser.getPassword());
+        ResponseEntity<?> responseEntity = userProxy.sendUserObjectToAuth(userDTO);
+        return userRepository.insert(user);
+    }
 
     @Override
     public Restaurant addRestaurant(Restaurant restaurant) {

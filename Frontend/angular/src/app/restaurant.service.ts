@@ -44,7 +44,7 @@ export class RestaurantService {
 
   addRestaurant(formData:FormData):Observable<any>
   {
-    return this.httpClient.post(this.baseUrl + "/restaurant1", formData);
+    return this.httpClient.post(this.baseUrl + "/restaurant", formData);
   }
 
 }

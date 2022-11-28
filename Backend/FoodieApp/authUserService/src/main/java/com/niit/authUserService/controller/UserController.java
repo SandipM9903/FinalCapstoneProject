@@ -31,7 +31,7 @@ public class UserController
 
     @PostMapping("/login")
     public ResponseEntity<?> loginCheck(@RequestBody User user) throws InvalidDataException {
-        User result=userService.loginCheck(user.getUserName(),user.getPassword());
+        User result=userService.loginCheck(user.getEmailId(),user.getPassword());
         if(result!=null)
         {
             Map<String,String> key=securityTokenGenerator.generateToken(user);

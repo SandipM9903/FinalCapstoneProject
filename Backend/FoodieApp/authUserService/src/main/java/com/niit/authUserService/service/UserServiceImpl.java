@@ -15,7 +15,7 @@ public class UserServiceImpl implements IUserService
     private UserRepository userRepository;
     @Override
     public User saveUser(User user) throws UserAlreadyExistsException {
-        if (userRepository.findById(user.getUserName()).isPresent())
+        if (userRepository.findById(user.getEmailId()).isPresent())
         {
             throw new UserAlreadyExistsException();
         }
@@ -23,8 +23,8 @@ public class UserServiceImpl implements IUserService
     }
 
     @Override
-    public User loginCheck(String userName, String password) throws InvalidDataException {
-        User loggedInUser = userRepository.findByUserNameAndPassword(userName, password);
+    public User loginCheck(String emailId, String password) throws InvalidDataException {
+        User loggedInUser = userRepository.findByEmailIdAndPassword(emailId, password);
         if (loggedInUser == null)
         {
             throw new InvalidDataException();

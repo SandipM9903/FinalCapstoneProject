@@ -3,6 +3,8 @@ package com.example.restaurantService.Controller;
 
 import com.example.restaurantService.Exceptions.CuisineNotFoundException;
 import com.example.restaurantService.Exceptions.RestaurantNotFoundException;
+import com.example.restaurantService.Exceptions.UserAlreadyExistException;
+import com.example.restaurantService.Model.CommonUser;
 import com.example.restaurantService.Model.Cuisine;
 import com.example.restaurantService.Model.Restaurant;
 import com.example.restaurantService.Service.RestaurantService;
@@ -22,14 +24,13 @@ public class RestaurantController
 {
     @Autowired
     RestaurantService restaurantService;
-
     private ResponseEntity<?> responseEntity;
 
-    //http://localhost:65100/api/v1/restaurant
-    @PostMapping("/restaurant")
-    public ResponseEntity<?> addRestaurant(@RequestBody Restaurant restaurant)
+    //http://localhost:65100/api/v1/register
+    @PostMapping("/register")
+    public ResponseEntity<?> registerUser(@RequestBody CommonUser commonUser) throws UserAlreadyExistException
     {
-        return new ResponseEntity<>(restaurantService.addRestaurant(restaurant), HttpStatus.OK);
+        return new ResponseEntity<>(restaurantService.registerAdmin(commonUser), HttpStatus.OK);
     }
 
     //http://localhost:65100/api/v1/{restaurantId}/cuisine
@@ -88,7 +89,8 @@ public class RestaurantController
         return responseEntity;
     }
 
-    @PostMapping("restaurant1")
+    //http://localhost:65100/api/v1/restaurant
+    @PostMapping("restaurant")
     public ResponseEntity<?> saveRestaurant(@RequestParam("file") MultipartFile file, @RequestParam ("restaurant") String restaurant) throws IOException {
         Restaurant restaurant1 = new ObjectMapper().readValue(restaurant, Restaurant.class);
         restaurant1.setPicByte(file.getBytes());
@@ -96,4 +98,6 @@ public class RestaurantController
         Restaurant dbRestaurant = restaurantService.addRestaurant(restaurant1);
         return new ResponseEntity<>(dbRestaurant,HttpStatus.OK);
     }
+
+
 }

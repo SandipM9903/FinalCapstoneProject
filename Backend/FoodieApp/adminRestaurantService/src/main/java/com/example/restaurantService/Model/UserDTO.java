@@ -1,17 +1,14 @@
-package com.niit.authUserService.model;
+package com.example.restaurantService.Model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
-@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User
+public class UserDTO
 {
     @Id
     private String emailId;
