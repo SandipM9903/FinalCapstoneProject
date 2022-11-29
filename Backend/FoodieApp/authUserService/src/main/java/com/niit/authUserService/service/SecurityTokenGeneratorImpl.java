@@ -21,7 +21,7 @@ public class SecurityTokenGeneratorImpl implements SecurityTokenGenerator
 
         String jwtToken = Jwts.builder().setClaims(data)
                 .setIssuedAt(new Date())
-                .signWith(SignatureAlgorithm.HS512, "mysecuritykey")
+                .signWith(SignatureAlgorithm.HS512, "securityKey")
                 .compact();
         result.put("token", jwtToken);
         return result;

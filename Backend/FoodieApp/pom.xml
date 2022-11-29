@@ -40,8 +40,9 @@
   </dependencies>
 
   <modules>
-    <module>adminRestaurantService</module>
+    <module>restaurantService</module>
     <module>authUserService</module>
+    <module>userRestaurantService</module>
   </modules>
 
   <build>
