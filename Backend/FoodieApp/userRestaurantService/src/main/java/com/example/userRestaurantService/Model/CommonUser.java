@@ -17,7 +17,6 @@ public class CommonUser
 //    private String fileName;
     private String firstName;
     private String lastName;
-    private String role;
     private String gender;
     private String password;
 }

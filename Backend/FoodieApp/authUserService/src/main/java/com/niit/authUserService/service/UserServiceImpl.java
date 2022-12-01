@@ -31,4 +31,9 @@ public class UserServiceImpl implements IUserService
         }
         return loggedInUser;
     }
+
+    @Override
+    public User getUserDetails(String emailId) {
+        return userRepository.findById(emailId).get();
+    }
 }

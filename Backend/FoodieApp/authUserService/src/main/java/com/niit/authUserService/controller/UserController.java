@@ -26,6 +26,7 @@ public class UserController
     //http://localhost:8085/authservice/register
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody User user) throws UserAlreadyExistsException {
+        user.setUserRole("USER");
         return new ResponseEntity<>(userService.saveUser(user), HttpStatus.CREATED);
     }
 
@@ -42,5 +43,11 @@ public class UserController
             return new ResponseEntity<>("Authentication failed",HttpStatus.NOT_FOUND);
         }
 
+    }
+
+    @GetMapping("/{emailId}")
+    public ResponseEntity<?> getUserDetails(@PathVariable String emailId)
+    {
+        return new ResponseEntity<>(userService.getUserDetails(emailId), HttpStatus.OK);
     }
 }

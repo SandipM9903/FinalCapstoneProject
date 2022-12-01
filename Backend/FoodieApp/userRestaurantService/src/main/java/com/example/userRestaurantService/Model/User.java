@@ -19,7 +19,6 @@ public class User{
 //    private String fileName;
     private String firstName;
     private String lastName;
-    private String role;
     private String gender;
     private String password;
     private List<Restaurant> favouriteRestaurant;

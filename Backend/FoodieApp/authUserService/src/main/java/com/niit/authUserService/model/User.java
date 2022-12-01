@@ -16,4 +16,5 @@ public class User
     @Id
     private String emailId;
     private String password;
+    private String userRole;
 }

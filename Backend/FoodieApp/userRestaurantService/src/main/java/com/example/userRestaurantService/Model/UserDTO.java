@@ -13,4 +13,5 @@ public class UserDTO
     @Id
     private String emailId;
     private String password;
+    private String userRole;
 }

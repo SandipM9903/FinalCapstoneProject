@@ -30,7 +30,7 @@ public class UserRestaurantServiceImpl implements UserRestaurantService {
 
     @Override
     public User registerUser(CommonUser commonUser) throws UserAlreadyExistException {
-        User user = new User(commonUser.getEmailId(), commonUser.getProfilePicture(), commonUser.getFirstName(), commonUser.getLastName(), commonUser.getRole(), commonUser.getGender(), commonUser.getPassword(), new ArrayList<>(), new ArrayList<>());
+        User user = new User(commonUser.getEmailId(), commonUser.getProfilePicture(), commonUser.getFirstName(), commonUser.getLastName(), commonUser.getGender(), commonUser.getPassword(), new ArrayList<>(), new ArrayList<>());
 
         if (userRepository.findById(user.getEmailId()).isPresent())
         {
