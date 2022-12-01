@@ -23,8 +23,25 @@ public class UserRestaurantServiceApplication {
 	public FilterRegistrationBean jwtFilter(){
 		FilterRegistrationBean frb = new FilterRegistrationBean();
 		frb.setFilter(new JwtFilter());
-		frb.addUrlPatterns("/api/v2/*");
+		frb.addUrlPatterns("/api/v2/user/*");
 		return frb;
+	}
+
+	@Bean
+	public FilterRegistrationBean filterRegistrationBean()
+	{
+		final CorsConfiguration config = new CorsConfiguration();
+		config.setAllowCredentials(true);
+		config.addAllowedOrigin("http://localhost:4200");
+		config.addAllowedHeader("*");
+		config.addAllowedMethod("*");
+
+		final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		source.registerCorsConfiguration("/**", config);
+
+		FilterRegistrationBean bean = new FilterRegistrationBean(new CorsFilter(source));
+		bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
+		return bean;
 	}
 
 }

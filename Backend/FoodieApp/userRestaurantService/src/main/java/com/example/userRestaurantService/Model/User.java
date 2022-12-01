@@ -12,14 +12,15 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class User
-{
+public class User{
     @Id
     private String emailId;
     private byte[] profilePicture;
+//    private String fileName;
     private String firstName;
     private String lastName;
     private String role;
+    private String gender;
     private String password;
     private List<Restaurant> favouriteRestaurant;
     private List<Cuisine> favouriteCuisine;

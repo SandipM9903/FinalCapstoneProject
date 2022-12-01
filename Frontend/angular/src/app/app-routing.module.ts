@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CuisineComponent } from './cuisine/cuisine.component';
-import { RestaurantComponent } from './restaurant/restaurant.component';
-import { ViewRestaurantComponent } from './view-restaurant/view-restaurant.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
-  {path:'', component:RestaurantComponent},
-  {path:'restaurant', component:RestaurantComponent},
-  {path:'view/:id', component:ViewRestaurantComponent},
-  {path:'cuisine', component:CuisineComponent}
+  {path:'login', component:LoginComponent},
+  {path:'register', component:RegisterComponent},
+  {path:'signup', component:SignupComponent}
+  
 ];
 
 @NgModule({

@@ -14,8 +14,10 @@ public class CommonUser
     @Id
     private String emailId;
     private byte[] profilePicture;
+//    private String fileName;
     private String firstName;
     private String lastName;
     private String role;
+    private String gender;
     private String password;
 }
