@@ -1,0 +1,38 @@
+<!-- <div>
+    <p>{{data.restaurantId}}</p>
+    <p>{{data.restaurantName}}</p>
+    <hr>
+    <div *ngFor="let s of data.cuisineList">
+        <p>{{s.cuisineId}}</p>
+        <hr>
+        <p>{{s.cuisineName}}</p>
+        <hr>
+        <p>{{s.price}}</p>
+        <button (click)="deleteCuisine(s.cuisineId)">DELETE</button>
+    </div>
+</div> -->
+
+<div>
+    <p>WANT TO ADD CUISINE</p>
+    <button routerLink="/cuisine">CLICK HERE TO ADD CUISINE</button>
+</div>
+
+<div style="float: left;" class="col">
+    <div class="row">
+        <h3>{{data.restaurantName}}</h3>
+        <img [src]="retrievedImage" width="100px" height="100px">
+      <div class="card" style="width: 15rem;" *ngFor="let s of data.cuisineList">
+        <div class="card-header">
+          CUISINE
+        </div>
+        <ul class="list-group list-group-flush"  style="background-color: lightgray;">
+          <li class="list-group-item" style="background-color: lightgray;">CUISINE ID : {{s.cuisineId}}</li>
+          <li class="list-group-item" >CUISINE NAME : {{s.cuisineName}}</li>
+          <li class="list-group-item" >CUISINE PRICE : {{s.price}}</li>
+        </ul>
+        <br>
+        <button type="button" class="btn btn-danger" (click)="deleteCuisine(s.cuisineId)">Delete</button>
+        <br>
+      </div>
+    </div>
+</div>

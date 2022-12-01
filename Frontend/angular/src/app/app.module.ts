@@ -5,31 +5,23 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatIconModule} from '@angular/material/icon';
-import { SignupComponent } from './signup/signup.component';
+import { RestaurantComponent } from './restaurant/restaurant.component';
+import { CuisineComponent } from './cuisine/cuisine.component';
+import { ViewRestaurantComponent } from './view-restaurant/view-restaurant.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    LoginComponent,
-    RegisterComponent,
-    SignupComponent
+    RestaurantComponent,
+    CuisineComponent,
+    ViewRestaurantComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatFormFieldModule,
-    MatIconModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
