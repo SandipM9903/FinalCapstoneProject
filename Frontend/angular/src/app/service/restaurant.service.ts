@@ -46,5 +46,4 @@ export class RestaurantService {
   {
     return this.httpClient.post(this.baseUrl + "/restaurant", formData);
   }
-
 }

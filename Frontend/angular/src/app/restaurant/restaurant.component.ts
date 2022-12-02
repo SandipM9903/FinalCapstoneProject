@@ -1,10 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Filehandle } from '../model/file-handle.model';
-import { Restaurant } from '../model/restaurant';
-import { RestaurantService } from '../restaurant.service';
+import { FileHandle } from '../model/FileHandle';
+import { RestaurantService } from '../service/restaurant.service';
 
 @Component({
   selector: 'app-restaurant',
@@ -13,14 +11,11 @@ import { RestaurantService } from '../restaurant.service';
 })
 export class RestaurantComponent implements OnInit {
 
-
-  constructor(private restaurantService:RestaurantService, private fb:FormBuilder, private httpClient : HttpClient, private sanitizer: DomSanitizer) { 
-    this.getAllRestaurants();
-  }
+  constructor(private sanitizer: DomSanitizer, private restaurantService:RestaurantService) { }
 
   ngOnInit(): void {
   }
-  restaurants:Restaurant[]= [];
+
   restaurantId='';
   restaurantData:any;
   public userFile1:any = File;
@@ -37,7 +32,7 @@ export class RestaurantComponent implements OnInit {
   onFileSelect(event:any)
   {
     const file = event.target.files[0];
-    const fileHandle : Filehandle={
+    const fileHandle : FileHandle={
       file: file,
       url:this.sanitizer.bypassSecurityTrustUrl(
         window.URL.createObjectURL(file)
@@ -57,15 +52,8 @@ export class RestaurantComponent implements OnInit {
       response =>
       {
         alert("Restaurant Added");
-        this.getAllRestaurants();
       }
     )
   }
 
-  getAllRestaurants()
-  {
-    this.restaurantService.getAllRestaurants().subscribe(
-      data=>this.restaurants=data
-    );
-  }
 }
