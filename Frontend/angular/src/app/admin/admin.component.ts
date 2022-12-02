@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Restaurant } from '../model/restaurant';
 import { RestaurantService } from '../service/restaurant.service';
@@ -28,16 +28,6 @@ export class AdminComponent implements OnInit {
   public userFile2:any = File;
   retrievedImage: any;
   data: any;
-
-  // onCreate()
-  // {
-  //   const dialogConfig = new MatDialogConfig();
-  //   dialogConfig.disableClose = true;
-  //   dialogConfig.autoFocus = true;
-  //   dialogConfig.width = "100%";
-  //   dialogConfig.height = "100%";
-  //   this.dialog.open(RestaurantComponent);
-  // }
 
   getAllRestaurants()
   {

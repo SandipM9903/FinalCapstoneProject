@@ -18,6 +18,7 @@ body
 {
     max-width: 700px;
     width: 100%;
+    margin-top: 20px;
     margin-left: 51vh;
     display: flex;
     justify-content: center;
@@ -43,7 +44,7 @@ body
     transition: .4s 0s;
 }
 
-.btn:before,.btn:after, .btn span:before.btn span:after{
+.btn:before,.btn:after, .btn span:before, .btn span:after{
     content:'';
     display: block;
     width: 0;
@@ -64,6 +65,42 @@ body
 .btn span:after
 {
     width: 1px; 
+}
+
+.btn span:before{
+    top: 0;
+    left: 0;
+}
+
+.btn:before{
+    bottom: 0;
+    right: 0;
+}
+
+.btn span:after{
+    bottom: 0;
+    left: 0;
+}
+
+.btn:after{
+    top: 0;
+    right: 0;
+}
+
+.btn:hover{
+    background-color: #fff;
+    color: #111;transition: .4s .4s;
+}
+
+.btn:hover span:before, .btn:hover:before
+{
+    width: 100%;
+    transition: .4s 0s;
+}
+
+.btn:hover:after, .btn:hover span:after{
+    height: 100%;
+    transition: .4s 0s;
 }
 
 .card

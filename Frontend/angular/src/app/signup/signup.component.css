@@ -12,7 +12,7 @@ body
     height: 100vh;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, #05073a, #dc0606ca);
+    background: linear-gradient(135deg, #05073a, violet);
     padding: 10px;
 }
 
@@ -23,7 +23,7 @@ body
     width: 100%;
     padding: 25px 30px;
     border-radius: 25px;
-    background: linear-gradient(135deg, #dc0606ca, #05073a);
+    background: linear-gradient(135deg, violet, #05073a);
 }
 
 .container .heading
