@@ -1,7 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { RestaurantComponent } from '../restaurant/restaurant.component';
-import { SignupComponent } from '../signup/signup.component';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Restaurant } from '../model/restaurant';
+import { RestaurantService } from '../service/restaurant.service';
 
 @Component({
   selector: 'app-admin',
@@ -10,18 +13,41 @@ import { SignupComponent } from '../signup/signup.component';
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private dialog : MatDialog) { }
+  constructor(private dialog : MatDialog, private restaurantService:RestaurantService, private fb:FormBuilder, private httpClient : HttpClient, private sanitizer: DomSanitizer) 
+  {
+    this.getAllRestaurants();
+  }
 
   ngOnInit(): void {
   }
 
-  onCreate()
+  restaurants:Restaurant[]= [];
+  restaurantId='';
+  restaurantData:any;
+  public userFile1:any = File;
+  public userFile2:any = File;
+  retrievedImage: any;
+  data: any;
+
+  // onCreate()
+  // {
+  //   const dialogConfig = new MatDialogConfig();
+  //   dialogConfig.disableClose = true;
+  //   dialogConfig.autoFocus = true;
+  //   dialogConfig.width = "100%";
+  //   dialogConfig.height = "100%";
+  //   this.dialog.open(RestaurantComponent);
+  // }
+
+  getAllRestaurants()
   {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    dialogConfig.width = "100%";
-    dialogConfig.height = "100%";
-    this.dialog.open(RestaurantComponent);
+    this.restaurantService.getAllRestaurants().subscribe(
+      data=>
+      {
+        this.restaurants=data;
+        this.retrievedImage = 'data:image/jpeg;base64,' + this.data.picByte;
+      }
+    );
   }
+
 }

@@ -16,6 +16,7 @@ import { UserComponent } from './user/user.component';
 import { HomeComponent } from './home/home.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { RestaurantComponent } from './restaurant/restaurant.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -27,7 +28,7 @@ import { RestaurantComponent } from './restaurant/restaurant.component';
     AdminComponent,
     UserComponent,
     HomeComponent,
-    RestaurantComponent,
+    RestaurantComponent
   ],
   imports: [
     BrowserModule,
@@ -38,10 +39,11 @@ import { RestaurantComponent } from './restaurant/restaurant.component';
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents:[RestaurantComponent]
+  entryComponents:[]
 })
 export class AppModule { }

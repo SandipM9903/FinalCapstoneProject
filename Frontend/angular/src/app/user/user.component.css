@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body
+{
+    background: #111;
+    margin-top: 40vh;
+    /* height: 100vh; */
+}
+
+.container
+{
+    max-width: 700px;
+    width: 100%;
+    margin-left: 51vh;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.btn
+{
+    color: #fff;
+    flex: 1 auto;
+    margin: 5px;
+    padding: 10px 25px;
+    text-align: center;
+    background-color: darkslategrey;
+    transition: all 0.5s ease-out;
+    cursor: pointer;
+}
+
+.btn
+{
+    background: transparent;
+    position: relative;
+    transition: .4s 0s;
+}
+
+.btn:before,.btn:after, .btn span:before.btn span:after{
+    content:'';
+    display: block;
+    width: 0;
+    height: 0;
+    background: #fff;
+    position: absolute;
+    margin: auto;
+    transition: .4s .4s;
+}
+
+.btn:before,
+.btn span:before
+{
+    height: 1px;
+}
+
+.btn:after,
+.btn span:after
+{
+    width: 1px; 
+}
+
+.card
+{
+    height: 450px;
+    width: 310px;
+    transform: scale(0.7);
+    border-radius: 8px;
+    box-shadow: 0 0 80px 1px #4169b0;
+    float: left;
+}
+
+.info
+{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.name
+{
+    font-size: 30px;
+    font-weight: 600;
+    color: #f79f08;
+    position: absolute;
+    top: 100px;
+    letter-spacing: 2px;
+}
+
+.prof
+{
+    font-size: 25px;
+    color: blue;
+    position: absolute;
+    top: 200px;
+}
+
+.divider
+{
+    background-color: #949594;
+    height: 1.5px;
+    width: 50px;
+    position: absolute;
+    top: 270px;
+}
+
+button
+{
+    position: absolute;
+    bottom: 30px;
+    background-color: #f79f08;
+    border: none;
+    font-size: 20px;
+    padding: 13px 25px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.photo
+{
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 0;
+    background-size: 100% 100%;
+    border-radius: 8px;
+    transition: 1s;
+}
+
+.card:hover .photo
+{
+    transform: scale(0.5,0.35) translateY(-650px);
+    border-radius: 50%;
+    background-size: 100% 150%;
+    background-position: 0 -25px;
+}

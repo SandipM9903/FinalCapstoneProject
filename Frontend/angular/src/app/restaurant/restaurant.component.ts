@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FileHandle } from '../model/FileHandle';
 import { RestaurantService } from '../service/restaurant.service';
@@ -11,7 +12,7 @@ import { RestaurantService } from '../service/restaurant.service';
 })
 export class RestaurantComponent implements OnInit {
 
-  constructor(private sanitizer: DomSanitizer, private restaurantService:RestaurantService) { }
+  constructor(private sanitizer: DomSanitizer, private restaurantService:RestaurantService, private snackBar : MatSnackBar) { }
 
   ngOnInit(): void {
   }
@@ -51,7 +52,7 @@ export class RestaurantComponent implements OnInit {
     this.restaurantService.addRestaurant(formData).subscribe(
       response =>
       {
-        alert("Restaurant Added");
+        this.snackBar.open("Restaurant Added", "Close");
       }
     )
   }

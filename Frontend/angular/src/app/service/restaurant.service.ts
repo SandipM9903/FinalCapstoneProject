@@ -12,11 +12,6 @@ export class RestaurantService {
   baseUrl = "http://localhost:65100/api/v1"
   constructor(private httpClient : HttpClient, private fb : FormBuilder) { }
 
-  // addRestaurant(restaurantobj:any)
-  // {
-  //   return this.httpClient.post(this.baseUrl + "/restaurant", restaurantobj);
-  // }
-
   getAllCuisine()
   {
     return this.httpClient.get(this.baseUrl + "/" +this.restaurantId + "/cuisine");

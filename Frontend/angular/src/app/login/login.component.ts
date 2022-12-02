@@ -4,6 +4,7 @@ import { UserService } from '../service/user.service';
 import { Admin } from '../model/admin';
 import { AdminService } from '../service/admin.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private userService: UserService, private adminService : AdminService, private router : Router) { }
+  constructor(private userService: UserService, private adminService : AdminService, private router : Router, private snackBar : MatSnackBar) { }
 
   ngOnInit(): void {
   }
@@ -32,7 +33,6 @@ export class LoginComponent implements OnInit {
     this.userService.loginCheck(this.userForm.value).subscribe(
       response => {
         this.responseData = response;
-        console.log(this.responseData.token);
         this.adminService.emailId = this.userForm.value.emailId;
         this.adminService.getUserDetails().subscribe(
           res =>{
@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
           }
         )
         localStorage.setItem('jwt',this.responseData.token);
-        alert("User Logged In");
+        this.snackBar.open("Logged in", "Close");
       }
     )
   }
