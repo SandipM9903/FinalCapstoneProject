@@ -17,6 +17,11 @@ import { HomeComponent } from './home/home.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { RestaurantComponent } from './restaurant/restaurant.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { AdminTestComponent } from './admin-test/admin-test.component';
+import { CuisineComponent } from './cuisine/cuisine.component';
+import { AddCuisineComponent } from './add-cuisine/add-cuisine.component';
+import { UserCuisineComponent } from './user-cuisine/user-cuisine.component';
+import { FavCuisineComponent } from './fav-cuisine/fav-cuisine.component';
 
 
 @NgModule({
@@ -28,7 +33,12 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     AdminComponent,
     UserComponent,
     HomeComponent,
-    RestaurantComponent
+    RestaurantComponent,
+    AdminTestComponent,
+    CuisineComponent,
+    AddCuisineComponent,
+    UserCuisineComponent,
+    FavCuisineComponent
   ],
   imports: [
     BrowserModule,

@@ -16,4 +16,5 @@ public interface RestaurantService
     List<Cuisine> getAllCuisine(String restaurantId) throws CuisineNotFoundException;
     List<Restaurant> getAllRestaurant() throws RestaurantNotFoundException;
     public Restaurant getRestaurantDetails(String restaurantId) throws RestaurantNotFoundException;
+    boolean deleteProduct(String restaurantId) throws RestaurantNotFoundException;
 }

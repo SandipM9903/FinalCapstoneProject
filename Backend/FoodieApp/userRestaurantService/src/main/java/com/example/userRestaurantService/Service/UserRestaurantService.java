@@ -19,4 +19,5 @@ public interface UserRestaurantService
     List<Cuisine> getFavouriteCuisine(String emailId);
     User deleteFromFavouriteRestaurant(String restaurantName, String emailId);
     User deleteFromFavouriteCuisine(String cuisineName, String emailId);
+    User getUserDetails(String emailId);
 }

@@ -5,25 +5,23 @@ import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Restaurant } from '../model/restaurant';
-import { AdminService } from '../service/admin.service';
+import { User } from '../model/user';
 import { RestaurantService } from '../service/restaurant.service';
 import { UserService } from '../service/user.service';
 
 @Component({
-  selector: 'app-admin',
-  templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css']
+  selector: 'app-admin-test',
+  templateUrl: './admin-test.component.html',
+  styleUrls: ['./admin-test.component.css']
 })
-export class AdminComponent implements OnInit {
-
+export class AdminTestComponent implements OnInit {
   id:any;
-  emailId:any;
-  constructor(private adminService:AdminService, private route:ActivatedRoute ,private dialog : MatDialog, private restaurantService:RestaurantService, private fb:FormBuilder, private httpClient : HttpClient, private sanitizer: DomSanitizer) 
+  constructor(private userService:UserService,private route:ActivatedRoute ,private dialog : MatDialog, private restaurantService:RestaurantService, private fb:FormBuilder, private httpClient : HttpClient, private sanitizer: DomSanitizer) 
   {
     this.id=this.route.snapshot.params['id'];
     this.emailId=this.route.snapshot.params['emailId'];
-    this.getUserDetails2();
     this.getAllRestaurants();
+    // this.getUserDetails();
   }
 
   ngOnInit(): void {
@@ -36,8 +34,9 @@ export class AdminComponent implements OnInit {
   public userFile2:any = File;
   retrievedImage: any;
   data: any;
-  user:any;
   profileImage:any;
+  user:any;
+  emailId:any;
 
   getAllRestaurants()
   {
@@ -61,16 +60,11 @@ export class AdminComponent implements OnInit {
     )
   }
 
-  getUserDetails2()
-  {
-    this.adminService.getUserDetails2(this.adminService.emailId).subscribe(
-      data => 
-      {
-        console.log(data);
-        this.user = data; 
-        this.profileImage = 'data:image/jpeg;base64,' + this.user.profilePicture;
-      }
-    )
-  }
-
+  // getUserDetails()
+  // {
+  //   this.userService.getUserDetails().subscribe(
+  //     data => {console.log(data)
+  //     }
+  //   )
+  // }
 }

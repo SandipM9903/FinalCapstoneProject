@@ -16,4 +16,9 @@ export class AdminService {
   {
     return this.httpClient.get(this.baseUrl + this.emailId);
   }
+
+  getUserDetails2(emailId:any)
+  {
+    return this.httpClient.get("http://localhost:9000/api/v2/user/" + emailId);
+  }
 }

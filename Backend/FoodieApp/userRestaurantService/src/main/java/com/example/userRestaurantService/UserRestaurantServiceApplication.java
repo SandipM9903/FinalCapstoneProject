@@ -23,7 +23,7 @@ public class UserRestaurantServiceApplication {
 	public FilterRegistrationBean jwtFilter(){
 		FilterRegistrationBean frb = new FilterRegistrationBean();
 		frb.setFilter(new JwtFilter());
-		frb.addUrlPatterns("/api/v2/user/*");
+		frb.addUrlPatterns("/api/v2/");
 		return frb;
 	}
 

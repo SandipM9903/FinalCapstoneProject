@@ -78,4 +78,14 @@ public class RestaurantServiceImpl implements RestaurantService{
     public Restaurant getRestaurantDetails(String restaurantId) throws RestaurantNotFoundException {
         return restaurantRepository.findById(restaurantId).get();
     }
+
+    @Override
+    public boolean deleteProduct(String restaurantId) throws RestaurantNotFoundException {
+        if(restaurantRepository.findById(restaurantId).isEmpty())
+        {
+            throw new RestaurantNotFoundException();
+        }
+        restaurantRepository.deleteById(restaurantId);
+        return true;
+    }
 }

@@ -2,7 +2,6 @@ package com.example.restaurantService.Controller;
 
 import com.example.restaurantService.Exceptions.CuisineNotFoundException;
 import com.example.restaurantService.Exceptions.RestaurantNotFoundException;
-import com.example.restaurantService.Exceptions.UserAlreadyExistException;
 import com.example.restaurantService.Model.Cuisine;
 import com.example.restaurantService.Model.Restaurant;
 import com.example.restaurantService.Service.RestaurantService;
@@ -25,19 +24,19 @@ public class RestaurantController
     private ResponseEntity<?> responseEntity;
 
     //http://localhost:65100/api/v1/{restaurantId}/cuisine
-    @PostMapping("{restaurantId}/cuisine")
-    public ResponseEntity<?> saveUserCuisineToList(@RequestBody Cuisine cuisine, @PathVariable String restaurantId) throws RestaurantNotFoundException
-    {
-        try
-        {
-            responseEntity = new ResponseEntity<>(restaurantService.addCuisineToRestaurant(cuisine,restaurantId), HttpStatus.OK);
-        }
-        catch (RestaurantNotFoundException e)
-        {
-            throw new RestaurantNotFoundException();
-        }
-        return responseEntity;
-    }
+//    @PostMapping("{restaurantId}/cuisine")
+//    public ResponseEntity<?> saveUserCuisineToList(@RequestBody Cuisine cuisine, @PathVariable String restaurantId) throws RestaurantNotFoundException
+//    {
+//        try
+//        {
+//            responseEntity = new ResponseEntity<>(restaurantService.addCuisineToRestaurant(cuisine,restaurantId), HttpStatus.OK);
+//        }
+//        catch (RestaurantNotFoundException e)
+//        {
+//            throw new RestaurantNotFoundException();
+//        }
+//        return responseEntity;
+//    }
 
     //http://localhost:65100/api/v1/{restaurantId}/cuisine
     @GetMapping("/{restaurantId}/cuisine")
@@ -88,5 +87,21 @@ public class RestaurantController
         restaurant1.setFileName(file.getOriginalFilename());
         Restaurant dbRestaurant = restaurantService.addRestaurant(restaurant1);
         return new ResponseEntity<>(dbRestaurant,HttpStatus.OK);
+    }
+
+    //http://localhost:65100/api/v1/{restaurantId}/cuisine
+    @PostMapping("{restaurantId}/cuisine")
+    public ResponseEntity<?> saveUserCuisineToList(@RequestParam("file") MultipartFile file, @RequestParam ("cuisine") String cuisine, @PathVariable String restaurantId) throws RestaurantNotFoundException, IOException {
+        //            responseEntity = new ResponseEntity<>(restaurantService.addCuisineToRestaurant(cuisine,restaurantId), HttpStatus.OK);
+        Cuisine cuisine1 = new ObjectMapper().readValue(cuisine, Cuisine.class);
+        cuisine1.setImage(file.getBytes());
+        Restaurant dbCuisine = restaurantService.addCuisineToRestaurant(cuisine1,restaurantId);
+        return new ResponseEntity<>(dbCuisine,HttpStatus.OK);
+    }
+
+    //http://localhost:65100/api/v1/{restaurantId}
+    @DeleteMapping("/{restaurantId}")
+    public ResponseEntity<?> deleteProduct(@PathVariable String restaurantId) throws RestaurantNotFoundException {
+        return new ResponseEntity<>(restaurantService.deleteProduct(restaurantId),HttpStatus.OK);
     }
 }

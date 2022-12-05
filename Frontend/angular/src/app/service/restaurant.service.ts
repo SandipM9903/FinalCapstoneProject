@@ -27,6 +27,11 @@ export class RestaurantService {
     return this.httpClient.get(this.baseUrl + "/" + id);
   }
 
+  deleteRestaurant(restaurantid:any)
+  {
+    return this.httpClient.delete(this.baseUrl + "/" + restaurantid);
+  }
+
   addCuisine(cuisineobj:any)
   {
     return this.httpClient.post(this.baseUrl + "/" + this.restaurantId + "/cuisine", cuisineobj);

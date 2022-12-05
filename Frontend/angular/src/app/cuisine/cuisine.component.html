@@ -16,26 +16,24 @@
 
         </label>
         <ul>
-            <li><img [src]="profileImage" width="40px" height="40px" style="border-radius: 50%; margin-top: -8px;"></li>
-            <li style="color: #fff;">{{user.firstName}}</li>
-            <li><a class="active" routerLink="/home">Home</a></li>
+            <li><a class="active" routerLink="/admin">Home</a></li>
             <li><a routerLink="/login">LogOut</a></li>
         </ul>
     </nav>
 
     <div class="content" style="min-height: 100vh;">
         <div class="anchor">
-            <a routerLink="/restaurant" class="btn">ADD RESTAURANT<span></span></a>
+            <a routerLink="/add-cuisine" class="btn">ADD CUISINE<span></span></a>
         </div>
-        <div class="card" *ngFor="let s of restaurants">
+        <div class="card" *ngFor="let s of data.cuisineList">
             <div class="info">
-                <div class="name" style="font-size: 20px;">RESTAURANT NAME : {{s.restaurantName}}</div>
-                <div class="prof">{{s.restaurantLocation}}</div>
-                <div class="divider"></div>
-                <button class="view" [routerLink]="['/cuisine/'+ s.restaurantId]">View Restaurant</button>
-                <button class="delete" (click)="deleteRestaurant(s.restaurantId)">DELETE RESTAURANT</button>
+                <div class="name" style="font-size: 20px;">CUISINE NAME : {{s.cuisineName}}</div>
+                <div class="prof" style="font-size: 25px;">{{s.cuisineDescription}}</div>
+                <div class="prof" style="margin-top: 45px; font-size: 25px; color: brown;">RS : {{s.price}}</div>
+                <div class="divider" style="margin-top: 50px;"></div>
+                <button class="delete" (click)="deleteCuisine(s.cuisineId)">DELETE CUISINE</button>
             </div>
-            <img class="photo" [src]="'data:image/jpeg;base64,' + s.picByte">
+            <img class="photo" [src]="'data:image/jpeg;base64,' + s.image">
             <!-- <button type="button" class="btn btn-danger" (click)="deleteRestaurant(s.restaurantId)">Delete</button> -->
         </div>
      </div>

@@ -26,12 +26,6 @@ public class UserController
 
     private ResponseEntity<?> responseEntity;
 
-//    //http://localhost:9000/api/v2/register
-//    @PostMapping("/register")
-//    public ResponseEntity<?> registerUser(@RequestBody CommonUser commonUser) throws UserAlreadyExistException
-//    {
-//        return new ResponseEntity<>(userRestaurantService.registerUser(commonUser), HttpStatus.CREATED);
-//    }
 
     //http://localhost:9000/api/v1/user/addfavrestuarant/{emailId}
     @PostMapping("/user/addfavrestuarant/{emailId}")
@@ -46,6 +40,16 @@ public class UserController
         }
     }
 
+//    //http://localhost:9000/api/v1/user/addfavcuisine/{emailId}
+//    @PostMapping("/user/addfavcuisine/{emailId}")
+//    public ResponseEntity<?> addFavouriteCuisine(@RequestParam("file") MultipartFile file, @RequestParam ("cuisine") String cuisine, @PathVariable String emailId) throws IOException {
+////        return new ResponseEntity<>(userRestaurantService.addFavouriteCuisine(cuisine,emailId),HttpStatus.OK);
+//        Cuisine cuisine1 = new ObjectMapper().readValue(cuisine, Cuisine.class);
+//        cuisine1.setImage(file.getBytes());
+//        User dbCuisine = userRestaurantService.addFavouriteCuisine(cuisine1,emailId);
+//        return new ResponseEntity<>(dbCuisine,HttpStatus.OK);
+//    }
+
     //http://localhost:9000/api/v1/user/addfavcuisine/{emailId}
     @PostMapping("/user/addfavcuisine/{emailId}")
     public ResponseEntity<?> addFavouriteCuisine(@RequestBody Cuisine cuisine , @PathVariable String emailId)
@@ -57,6 +61,12 @@ public class UserController
     @GetMapping("/user/getfavrestaurant/{emailId}")
     public ResponseEntity<?> getFavouriteRestaurant(@PathVariable String emailId) {
         return new ResponseEntity<>(userRestaurantService.getFavouriteRestaurant(emailId), HttpStatus.OK);
+    }
+
+    //http://localhost:9000/api/v2/user/{emailId}
+    @GetMapping("/user/{emailId}")
+    public ResponseEntity<?> getUserDetails(@PathVariable String emailId) {
+        return new ResponseEntity<>(userRestaurantService.getUserDetails(emailId), HttpStatus.OK);
     }
 
     //http://localhost:9000/api/v1/user/getfavcuisine/{emailId}
@@ -72,9 +82,9 @@ public class UserController
     }
 
     //http://localhost:9000/api/v1/user/deletefavcuisine/{emailId}/{restaurantName}
-    @DeleteMapping("/user/deletefavcuisine/{emailId}/{cuisineName}")
-    public ResponseEntity<?> deleteFavouriteCuisine(@PathVariable String cuisineName, @PathVariable String emailId) {
-        return new ResponseEntity<>(userRestaurantService.deleteFromFavouriteCuisine(cuisineName,emailId), HttpStatus.OK);
+    @DeleteMapping("/user/deletefavcuisine/{emailId}/{cuisineId}")
+    public ResponseEntity<?> deleteFavouriteCuisine(@PathVariable String cuisineId, @PathVariable String emailId) {
+        return new ResponseEntity<>(userRestaurantService.deleteFromFavouriteCuisine(cuisineId,emailId), HttpStatus.OK);
     }
     //http://localhost:9000/api/v2/register
     @PostMapping("/register")
@@ -84,21 +94,5 @@ public class UserController
         User dbCommonUser = userRestaurantService.registerUser(User1);
         return new ResponseEntity<>(dbCommonUser, HttpStatus.OK);
     }
-
-//        //http://localhost:9000/api/v1/register
-//    @PostMapping("/register")
-//    public ResponseEntity<?> registerUser(@RequestParam("file")MultipartFile file,@RequestBody CommonUser commonUser) throws UserAlreadyExistException, IOException {
-//        commonUser.setProfilePicture(file.getBytes());
-//        return new ResponseEntity<>(userRestaurantService.registerUser(commonUser), HttpStatus.OK);
-//    }
-
-//    //http://localhost:9000/api/v2/register
-//    @PostMapping("/register")
-//    public ResponseEntity<?> registerUser(@RequestBody CommonUser commonUser) throws UserAlreadyExistException, IOException {
-//        CommonUser User1 = new CommonUser();
-//        User1.setProfilePicture(commonUser.getProfilePicture());
-//        User dbCommonUser = userRestaurantService.registerUser(User1);
-//        return new ResponseEntity<>(dbCommonUser, HttpStatus.OK);
-//    }
 
 }

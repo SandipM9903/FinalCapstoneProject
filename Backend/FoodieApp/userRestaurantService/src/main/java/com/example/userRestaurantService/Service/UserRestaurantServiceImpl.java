@@ -98,9 +98,14 @@ public class UserRestaurantServiceImpl implements UserRestaurantService {
     }
 
     @Override
-    public User deleteFromFavouriteCuisine(String cuisineName, String emailId) {
+    public User deleteFromFavouriteCuisine(String cuisineId, String emailId) {
         User cust = userRepository.findById(emailId).get();
-        cust.getFavouriteCuisine().removeIf(cus->cus.getCuisineName().equals(cuisineName));
+        cust.getFavouriteCuisine().removeIf(cus->cus.getCuisineId().equals(cuisineId));
         return  userRepository.save(cust);
+    }
+
+    @Override
+    public User getUserDetails(String emailId) {
+        return userRepository.findById(emailId).get();
     }
 }

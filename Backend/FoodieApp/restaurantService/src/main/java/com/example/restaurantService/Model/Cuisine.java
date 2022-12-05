@@ -14,6 +14,7 @@ public class Cuisine
 {
     @Id
     private String cuisineId;
+    private byte[] image;
     private String cuisineName;
     private String cuisineDescription;
     private int price;
