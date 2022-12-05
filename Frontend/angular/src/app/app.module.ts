@@ -22,6 +22,7 @@ import { CuisineComponent } from './cuisine/cuisine.component';
 import { AddCuisineComponent } from './add-cuisine/add-cuisine.component';
 import { UserCuisineComponent } from './user-cuisine/user-cuisine.component';
 import { FavCuisineComponent } from './fav-cuisine/fav-cuisine.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { FavCuisineComponent } from './fav-cuisine/fav-cuisine.component';
     CuisineComponent,
     AddCuisineComponent,
     UserCuisineComponent,
-    FavCuisineComponent
+    FavCuisineComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,7 @@ import { AdminComponent } from './admin/admin.component';
 import { CuisineComponent } from './cuisine/cuisine.component';
 import { FavCuisineComponent } from './fav-cuisine/fav-cuisine.component';
 import { HomeComponent } from './home/home.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LoginComponent } from './login/login.component';
 import { RestaurantComponent } from './restaurant/restaurant.component';
 import { SignupComponent } from './signup/signup.component';
@@ -13,7 +14,7 @@ import { UserCuisineComponent } from './user-cuisine/user-cuisine.component';
 import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
-  {path:'', component:LoginComponent},
+  {path:'', component:LandingPageComponent},
   {path:'add-cuisine', component:AddCuisineComponent},
   {path:'fav-cuisine', component:FavCuisineComponent},
   {path:'cuisine/:id', component:CuisineComponent},
