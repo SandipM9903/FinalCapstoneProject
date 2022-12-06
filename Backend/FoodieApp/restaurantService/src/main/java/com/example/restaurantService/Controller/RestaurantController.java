@@ -59,6 +59,12 @@ public class RestaurantController
         return new ResponseEntity<>(restaurantService.getAllRestaurant(), HttpStatus.OK);
     }
 
+    //http://localhost:65100/api/v1/restaurants/{city}
+    @GetMapping("/restaurants/{city}")
+    public ResponseEntity<?> getRestaurantsByCity(@PathVariable String city) throws RestaurantNotFoundException{
+        return new ResponseEntity<>(restaurantService.getRestaurantsByCity(city),HttpStatus.OK);
+    }
+
     //http://localhost:65100/api/v1/{restaurantId}
     @GetMapping("/{restaurantId}")
     public ResponseEntity<?> getRestaurantDetails(@PathVariable String restaurantId) throws RestaurantNotFoundException {

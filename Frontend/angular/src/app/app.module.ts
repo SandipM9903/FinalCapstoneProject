@@ -23,6 +23,12 @@ import { AddCuisineComponent } from './add-cuisine/add-cuisine.component';
 import { UserCuisineComponent } from './user-cuisine/user-cuisine.component';
 import { FavCuisineComponent } from './fav-cuisine/fav-cuisine.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { SearchComponent } from './search/search.component';
+import { FilterPipe } from './filter.pipe';
+import { FilterNamePipe } from './filter-name.pipe';
+import { AddressComponent } from './address/address.component';
+import { ViewAddressComponent } from './view-address/view-address.component';
+
 
 
 @NgModule({
@@ -40,7 +46,12 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     AddCuisineComponent,
     UserCuisineComponent,
     FavCuisineComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    SearchComponent,
+    FilterPipe,
+    FilterNamePipe,
+    AddressComponent,
+    ViewAddressComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +63,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     MatFormFieldModule,
     MatIconModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

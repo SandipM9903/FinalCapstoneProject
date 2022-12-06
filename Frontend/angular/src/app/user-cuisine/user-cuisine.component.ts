@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AdminService } from '../service/admin.service';
 import { FavouriteService } from '../service/favourite.service';
 import { RestaurantService } from '../service/restaurant.service';
+import { FilterNamePipe } from '../filter-name.pipe';
 
 @Component({
   selector: 'app-user-cuisine',
@@ -17,6 +18,8 @@ export class UserCuisineComponent implements OnInit {
   retrievedImage: any;
   user:any;
   profileImage:any;
+
+  searchTextName!:string;
 
   constructor(private fav:FavouriteService,private adminService:AdminService,private route:ActivatedRoute, private restaurantService:RestaurantService) {
     this.id=this.route.snapshot.params['id'];
@@ -82,5 +85,6 @@ export class UserCuisineComponent implements OnInit {
     });
     console.log('added item for '+this.email);
   }
+  
 
 }

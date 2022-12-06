@@ -14,7 +14,8 @@ import { FavouriteService } from '../service/favourite.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private fav:FavouriteService, private userService: UserService, private adminService : AdminService, private router : Router, private snackBar : MatSnackBar) 
+  constructor(private fav:FavouriteService, private userService: UserService, private adminService : AdminService, 
+    private router : Router, private snackBar : MatSnackBar) 
   { 
 
   }
@@ -39,6 +40,7 @@ export class LoginComponent implements OnInit {
       response => {
         this.responseData = response;
         this.adminService.emailId = this.userForm.value.emailId;
+        localStorage.setItem('mailId',this.userForm.value.emailId!);
         this.fav.emailId = this.userForm.value.emailId;
         this.adminService.getUserDetails().subscribe(
           res =>{

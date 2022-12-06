@@ -21,6 +21,11 @@ export class FavouriteService {
 
   }
 
+  addAddress(addressobj:any)
+  {
+    return this.http.post(this.baseurl + "addAddress/" + this.emailId ,addressobj);
+  }
+
   addToFaves(item:any,email:any){
     return this.http.post(this.baseurl+'addfavcuisine/'+ this.emailId,item,{headers: this.headers});
     
@@ -33,6 +38,16 @@ export class FavouriteService {
   getItems()
   {
     return this.http.get(this.baseurl + "getfavcuisine/" + this.emailId);
+  }
+
+  getAddress()
+  {
+    return this.http.get(this.baseurl + "getAddress/" + this.emailId);
+  }
+
+  removeAddress(houseNo:string)
+  {
+    return this.http.delete(this.baseurl+'deleteAddress/'+ this.emailId + "/" + houseNo);
   }
 
   removeFavItem(name:string)

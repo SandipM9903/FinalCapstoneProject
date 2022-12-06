@@ -1,12 +1,8 @@
 package com.example.userRestaurantService.Service;
 
 import com.example.userRestaurantService.Exceptions.RestaurantAlreadyExistsException;
-import com.example.userRestaurantService.Model.Cuisine;
+import com.example.userRestaurantService.Model.*;
 import com.example.userRestaurantService.Exceptions.UserAlreadyExistException;
-import com.example.userRestaurantService.Model.CommonUser;
-import com.example.userRestaurantService.Model.Restaurant;
-import com.example.userRestaurantService.Model.User;
-import com.example.userRestaurantService.Model.UserDTO;
 import com.example.userRestaurantService.Proxy.UserProxy;
 import com.example.userRestaurantService.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +26,7 @@ public class UserRestaurantServiceImpl implements UserRestaurantService {
 
     @Override
     public User registerUser(CommonUser commonUser) throws UserAlreadyExistException {
-        User user = new User(commonUser.getEmailId(), commonUser.getProfilePicture(), commonUser.getFirstName(), commonUser.getLastName(), commonUser.getGender(), commonUser.getPassword(), new ArrayList<>(), new ArrayList<>());
+        User user = new User(commonUser.getEmailId(), commonUser.getProfilePicture(), commonUser.getFirstName(), commonUser.getLastName(), commonUser.getGender(), commonUser.getPassword(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
 
         if (userRepository.findById(user.getEmailId()).isPresent())
         {
@@ -45,21 +41,21 @@ public class UserRestaurantServiceImpl implements UserRestaurantService {
     }
 
     @Override
-    public User addFavouriteRestaurant(Restaurant restaurant, String emailId) throws RestaurantAlreadyExistsException {
-        List<Restaurant> favRestauant = new ArrayList<>();
+    public User addAddress(Address address, String emailId) throws RestaurantAlreadyExistsException {
+        List<Address> addressList = new ArrayList<>();
         User user = userRepository.findById(emailId).get();
-        favRestauant = user.getFavouriteRestaurant();
-        if(favRestauant==null)
+        addressList = user.getAddressList();
+        if(addressList==null)
         {
-            user.setFavouriteRestaurant(Arrays.asList(restaurant));
+            user.setAddressList(Arrays.asList(address));
         }
-        else if(favRestauant.contains(restaurant)) {
+        else if(addressList.contains(address)) {
             throw new RestaurantAlreadyExistsException();
         }
         else
         {
-            favRestauant.add(restaurant);
-            user.setFavouriteRestaurant(favRestauant);
+            addressList.add(address);
+            user.setAddressList(addressList);
         }
         return userRepository.save(user);
     }
@@ -81,8 +77,8 @@ public class UserRestaurantServiceImpl implements UserRestaurantService {
     }
 
     @Override
-    public List<Restaurant> getFavouriteRestaurant(String emailId) {
-        return userRepository.findById(emailId).get().getFavouriteRestaurant();
+    public List<Address> getAddress(String emailId) {
+        return userRepository.findById(emailId).get().getAddressList();
     }
 
     @Override
@@ -91,9 +87,9 @@ public class UserRestaurantServiceImpl implements UserRestaurantService {
     }
 
     @Override
-    public User deleteFromFavouriteRestaurant(String restaurantName, String emailId) {
+    public User deleteAddress(String houseNo, String emailId) {
         User cust = userRepository.findById(emailId).get();
-        cust.getFavouriteRestaurant().removeIf(cus->cus.getRestaurantName().equals(restaurantName));
+        cust.getAddressList().removeIf(cus->cus.getHouseNo().equals(houseNo));
         return  userRepository.save(cust);
     }
 

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class RestaurantServiceImpl implements RestaurantService{
@@ -67,6 +68,12 @@ public class RestaurantServiceImpl implements RestaurantService{
             throw new CuisineNotFoundException();
         }
         return restaurantRepository.findById(restaurantId).get().getCuisineList();
+    }
+
+    @Override
+    public List<Restaurant> getRestaurantsByCity(String city){
+        List<Restaurant> cityRestaurants= restaurantRepository.findAll();
+        return cityRestaurants.stream().filter(s->s.getRestaurantLocation().equalsIgnoreCase(city)).collect(Collectors.toList());
     }
 
     @Override

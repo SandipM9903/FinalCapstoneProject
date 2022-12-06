@@ -23,4 +23,5 @@ public class User{
     private String password;
     private List<Restaurant> favouriteRestaurant;
     private List<Cuisine> favouriteCuisine;
+    private List<Address> addressList;
 }

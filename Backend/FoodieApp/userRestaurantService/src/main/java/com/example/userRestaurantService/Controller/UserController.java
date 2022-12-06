@@ -2,10 +2,7 @@ package com.example.userRestaurantService.Controller;
 
 import com.example.userRestaurantService.Exceptions.RestaurantAlreadyExistsException;
 import com.example.userRestaurantService.Exceptions.UserAlreadyExistException;
-import com.example.userRestaurantService.Model.CommonUser;
-import com.example.userRestaurantService.Model.Cuisine;
-import com.example.userRestaurantService.Model.Restaurant;
-import com.example.userRestaurantService.Model.User;
+import com.example.userRestaurantService.Model.*;
 import com.example.userRestaurantService.Service.UserRestaurantService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,12 +24,12 @@ public class UserController
     private ResponseEntity<?> responseEntity;
 
 
-    //http://localhost:9000/api/v1/user/addfavrestuarant/{emailId}
-    @PostMapping("/user/addfavrestuarant/{emailId}")
-    public ResponseEntity<?> addFavouriteRestaurant(@RequestBody Restaurant restaurant , @PathVariable String emailId) throws RestaurantAlreadyExistsException {
+    //http://localhost:9000/api/v2/user/addAddress/{emailId}
+    @PostMapping("/user/addAddress/{emailId}")
+    public ResponseEntity<?> addAddress(@RequestBody Address address, @PathVariable String emailId) throws RestaurantAlreadyExistsException {
         try
         {
-            return new ResponseEntity<>(userRestaurantService.addFavouriteRestaurant(restaurant,emailId),HttpStatus.OK);
+            return new ResponseEntity<>(userRestaurantService.addAddress(address,emailId),HttpStatus.OK);
         }
         catch (RestaurantAlreadyExistsException e)
         {
@@ -57,10 +54,10 @@ public class UserController
         return new ResponseEntity<>(userRestaurantService.addFavouriteCuisine(cuisine,emailId),HttpStatus.OK);
     }
 
-    //http://localhost:9000/api/v1/user/getfavrestaurant/{emailId}
-    @GetMapping("/user/getfavrestaurant/{emailId}")
-    public ResponseEntity<?> getFavouriteRestaurant(@PathVariable String emailId) {
-        return new ResponseEntity<>(userRestaurantService.getFavouriteRestaurant(emailId), HttpStatus.OK);
+    //http://localhost:9000/api/v2/user/getAddress/{emailId}
+    @GetMapping("/user/getAddress/{emailId}")
+    public ResponseEntity<?> getAddress(@PathVariable String emailId) {
+        return new ResponseEntity<>(userRestaurantService.getAddress(emailId), HttpStatus.OK);
     }
 
     //http://localhost:9000/api/v2/user/{emailId}
@@ -76,9 +73,9 @@ public class UserController
     }
 
     //http://localhost:9000/api/v1/user/deletefavrestaurant/{emailId}/{restaurantName}
-    @DeleteMapping("/user/deletefavrestaurant/{emailId}/{restaurantName}")
-    public ResponseEntity<?> deleteFavouriteRestaurant(@PathVariable String restaurantName, @PathVariable String emailId) {
-        return new ResponseEntity<>(userRestaurantService.deleteFromFavouriteRestaurant(restaurantName,emailId), HttpStatus.OK);
+    @DeleteMapping("/user/deleteAddress/{emailId}/{houseNo}")
+    public ResponseEntity<?> deleteAddress(@PathVariable String houseNo, @PathVariable String emailId) {
+        return new ResponseEntity<>(userRestaurantService.deleteAddress(houseNo,emailId), HttpStatus.OK);
     }
 
     //http://localhost:9000/api/v1/user/deletefavcuisine/{emailId}/{restaurantName}
