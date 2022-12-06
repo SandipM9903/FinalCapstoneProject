@@ -44,27 +44,39 @@
                 <div class="card-box">
                     <span class="details">Email ID</span>
                     <input type="email" placeholder="Enter emailId" formControlName="emailId" class="form-control">
+                    <small *ngIf="profileForm.get('emailId')?.touched && profileForm.get('emailId')?.invalid"
+                     style="color:red;font-size: large;">Please enter Valid Email id</small>
                 </div>
                 <div class="card-box">
                     <span class="details">First Name</span>
                     <input type="text" placeholder="Enter First Name" formControlName="firstName" class="form-control">
+                    <small *ngIf="profileForm.get('firstName')?.touched && profileForm.get('firstName')?.invalid"
+                     style="color:red;font-size: large;">Please enter Valid First Name</small>
                 </div>
                 <div class="card-box">
                     <span class="details">Last Name</span>
-                    <input type="text" placeholder="Enter Last Name" formControlName="lastName" class="form-control"> 
+                    <input type="text" placeholder="Enter Last Name" formControlName="lastName" class="form-control">
+                    <small *ngIf="profileForm.get('lastName')?.touched && profileForm.get('lastName')?.invalid"
+                    style="color:red;font-size: large;">Please enter Valid Last Name</small> 
                 </div>
                 <div class="card-box">
                     <span class="details">Gender</span>
-                    <input type="text" placeholder="Enter your gender" formControlName="gender" class="form-control">
+                    <input type="text" placeholder="Enter your Gender" formControlName="gender" class="form-control">
+                    <small *ngIf="profileForm.get('gender')?.touched && profileForm.get('gender')?.invalid"
+                    style="color:red;font-size: large;">Please enter your Gender</small>
                 </div>
                 <div class="card-box">
                     <span class="details">Password</span>
                     <input type="password" placeholder="Password" formControlName="password" class="form-control">
+                    <small *ngIf="profileForm.get('password')?.touched && profileForm.get('password')?.invalid"
+                    style="color:red;font-size: large;">Please enter Valid Password</small>
                 </div>
+
+          
             </div>
 
             <div class="button">
-                <input type="submit" (click)="registerUser(profileForm)">
+                <input [disabled]="profileForm.invalid" type="submit" (click)="registerUser(profileForm)">
             </div>
         </form>
     </div>

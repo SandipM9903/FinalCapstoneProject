@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../service/user.service';
 import { Admin } from '../model/admin';
 import { AdminService } from '../service/admin.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FavouriteService } from '../service/favourite.service';
+import { AuthService } from '../Guarding/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ import { FavouriteService } from '../service/favourite.service';
 export class LoginComponent implements OnInit {
 
   constructor(private fav:FavouriteService, private userService: UserService, private adminService : AdminService, 
-    private router : Router, private snackBar : MatSnackBar) 
+    private router : Router, private snackBar : MatSnackBar,private authService:AuthService) 
   { 
 
   }
@@ -28,8 +29,8 @@ export class LoginComponent implements OnInit {
   data:any;
 
   userForm = new FormGroup({
-    "emailId" : new FormControl(''),
-    "password" : new FormControl(''),
+    "emailId" : new FormControl('',[Validators.required,Validators.email]),
+    "password" : new FormControl('',[Validators.required]),
     "role" :new FormControl('this.data.userRole')
   });
 
@@ -59,27 +60,19 @@ export class LoginComponent implements OnInit {
         )
         localStorage.setItem('jwt',this.responseData.token);
         this.snackBar.open("Logged in", "Close");
+        this.authService.isUserLoggedIn=true;
       }
     )
   }
+  get emailid()
+  {
+    return this.userForm.get('emailId');
+  }
+
+  get Password()
+  {
+    return this.userForm.get('password');
+  }
 }
 
-  // loginCheck()
-  // {
-  //   this.userService.loginCheck(this.userForm.value).subscribe(
-  //     response => {
-  //       // console.log(response);
-  //       this.responseData = response;
-  //       console.log(this.responseData.emailId)
-  //       console.log(this.responseData.token);
-  //       if(this.responseData.userRole === "ADMIN")
-  //           {
-  //             this.router.navigate(['admin']);
-  //           }
-        
-  //       //Store Token in browser storage
-  //       localStorage.setItem('jwt',this.responseData.token);
-  //       alert("User Logged In");
-  //     }
-  //   )
-  // }
+

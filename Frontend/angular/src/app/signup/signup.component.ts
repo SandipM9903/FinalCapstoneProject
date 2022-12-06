@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FileHandle } from '../model/FileHandle';
+import { passwordMatch } from '../Password Check/PasswordMatch';
 import { UserService } from '../service/user.service';
 
 @Component({
@@ -14,13 +15,15 @@ export class SignupComponent implements OnInit {
   public userFile2:any = File;
 
   profileForm = new FormGroup({
-    emailId: new FormControl(''),
+    emailId: new FormControl('',[Validators.required,Validators.email]),
     profilePicture : new FormControl(''),
-    firstName : new FormControl(''),
-    lastName : new FormControl(''),
-    gender : new FormControl(''),
-    password : new FormControl('')
-  });
+    firstName : new FormControl('',[Validators.required]),
+    lastName : new FormControl('',[Validators.required]),
+    gender : new FormControl('',[Validators.required]),
+    password : new FormControl('',[Validators.required]),
+    // cpassword : new FormControl('',[Validators.required])
+  },
+  );
 
   constructor(private sanitizer: DomSanitizer, private userService:UserService) { }
 
@@ -54,4 +57,35 @@ export class SignupComponent implements OnInit {
       }
     )
   }
+
+  get EmailId()
+  {
+    return this.profileForm.get('emailId');
+  }
+
+  get FirstName()
+  {
+    return this.profileForm.get('firstName');
+  }
+
+  get LastName()
+  {
+    return this.profileForm.get('lastName');
+  }
+
+  get Gender()
+  {
+    return this.profileForm.get('gender');
+  }
+
+  get Passwords()
+  {
+    return this.profileForm.get('password');
+  }
+
+  get cPasswords()
+  {
+    return this.profileForm.get('cpassword');
+  }
+
 }

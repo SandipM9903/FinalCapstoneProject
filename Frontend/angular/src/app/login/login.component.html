@@ -32,10 +32,14 @@
                     <div class="card-box">
                         <span class="details">Email ID</span>
                         <input type="email" placeholder="Enter emailId" formControlName="emailId">
+                        <small *ngIf="userForm.get('emailId')?.touched && userForm.get('emailId')?.invalid"
+                         style="color:red;font-size: large;">Please enter Valid Email id</small>
                     </div>
                     <div class="card-box">
                         <span class="details">Password</span>
                         <input type="password" placeholder="Enter your password" formControlName="password">
+                        <small *ngIf="userForm.get('password')?.touched && userForm.get('password')?.invalid"
+                         style="color:red;font-size: large;">Please Enter Password</small>
                     </div>
                 </div>
 
