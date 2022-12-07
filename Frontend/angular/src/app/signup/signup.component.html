@@ -73,12 +73,18 @@
                             style="color:red;font-size: large;">Please enter Valid Password</small>
                     </div>
 
+                    <div class="card-box">
+                        <span class="details">Confirm Password</span>
+                        <input type="password" placeholder="Password" formControlName="cpassword" class="form-control">
+                        <small *ngIf="profileForm.get('cpassword')?.touched && profileForm.get('cpassword')?.invalid"
+                            style="color:red;font-size: medium;">Password does not matched</small>
+                    </div>
+
 
                 </div>
 
                 <div class="button">
-                    <input [disabled]="profileForm.invalid" type="submit" (click)="registerUser(profileForm)"
-                        routerLink="/login">
+                    <input [disabled]="profileForm.invalid" type="submit" (click)="registerUser(profileForm)">
                 </div>
             </form>
         </div>

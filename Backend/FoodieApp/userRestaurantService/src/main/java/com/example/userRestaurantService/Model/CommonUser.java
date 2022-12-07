@@ -19,4 +19,5 @@ public class CommonUser
     private String lastName;
     private String gender;
     private String password;
+    private String cpassword;
 }

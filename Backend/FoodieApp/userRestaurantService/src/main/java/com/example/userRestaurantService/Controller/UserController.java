@@ -1,5 +1,6 @@
 package com.example.userRestaurantService.Controller;
 
+import com.example.userRestaurantService.Exceptions.AddressAlreadyExistsException;
 import com.example.userRestaurantService.Exceptions.RestaurantAlreadyExistsException;
 import com.example.userRestaurantService.Exceptions.UserAlreadyExistException;
 import com.example.userRestaurantService.Model.*;
@@ -26,14 +27,14 @@ public class UserController
 
     //http://localhost:9000/api/v2/user/addAddress/{emailId}
     @PostMapping("/user/addAddress/{emailId}")
-    public ResponseEntity<?> addAddress(@RequestBody Address address, @PathVariable String emailId) throws RestaurantAlreadyExistsException {
+    public ResponseEntity<?> addAddress(@RequestBody Address address, @PathVariable String emailId) throws AddressAlreadyExistsException {
         try
         {
             return new ResponseEntity<>(userRestaurantService.addAddress(address,emailId),HttpStatus.OK);
         }
-        catch (RestaurantAlreadyExistsException e)
+        catch (AddressAlreadyExistsException e)
         {
-            throw new RestaurantAlreadyExistsException();
+            throw new AddressAlreadyExistsException();
         }
     }
 

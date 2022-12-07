@@ -168,7 +168,7 @@ input[type="checkbox"] {
     width: 100%;
     padding: 25px 30px;
     border-radius: 25px;
-    background: linear-gradient(135deg, #dc0606ca, #05073a);
+    background: linear-gradient(135deg, gray, #05073a);
 }
 
 .container .heading

@@ -7,10 +7,11 @@ export class User
     role:string;
     gender:string;
     password:string;
+    cpassword:string;
     // private List<Restaurant> favouriteRestaurant;
     // private List<Cuisine> favouriteCuisine;
 
-    constructor(emailId:any, profilePicture:any, firstName:any, lastName:any, role:any, gender:any,password:any)
+    constructor(emailId:any, profilePicture:any, firstName:any, lastName:any, role:any, gender:any,password:any,cpassword:any)
     {
         this.emailId = emailId;
         this.profilePicture = profilePicture;
@@ -19,5 +20,6 @@ export class User
         this.role = role;
         this.gender = gender;
         this.password = password;
+        this.cpassword = cpassword;
     }
 } 

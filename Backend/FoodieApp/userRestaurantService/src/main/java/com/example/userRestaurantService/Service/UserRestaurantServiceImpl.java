@@ -1,5 +1,6 @@
 package com.example.userRestaurantService.Service;
 
+import com.example.userRestaurantService.Exceptions.AddressAlreadyExistsException;
 import com.example.userRestaurantService.Exceptions.RestaurantAlreadyExistsException;
 import com.example.userRestaurantService.Model.*;
 import com.example.userRestaurantService.Exceptions.UserAlreadyExistException;
@@ -26,7 +27,7 @@ public class UserRestaurantServiceImpl implements UserRestaurantService {
 
     @Override
     public User registerUser(CommonUser commonUser) throws UserAlreadyExistException {
-        User user = new User(commonUser.getEmailId(), commonUser.getProfilePicture(), commonUser.getFirstName(), commonUser.getLastName(), commonUser.getGender(), commonUser.getPassword(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+        User user = new User(commonUser.getEmailId(), commonUser.getProfilePicture(), commonUser.getFirstName(), commonUser.getLastName(), commonUser.getGender(), commonUser.getPassword(), commonUser.getCpassword(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
 
         if (userRepository.findById(user.getEmailId()).isPresent())
         {
@@ -41,7 +42,7 @@ public class UserRestaurantServiceImpl implements UserRestaurantService {
     }
 
     @Override
-    public User addAddress(Address address, String emailId) throws RestaurantAlreadyExistsException {
+    public User addAddress(Address address, String emailId) throws AddressAlreadyExistsException {
         List<Address> addressList = new ArrayList<>();
         User user = userRepository.findById(emailId).get();
         addressList = user.getAddressList();
@@ -50,7 +51,7 @@ public class UserRestaurantServiceImpl implements UserRestaurantService {
             user.setAddressList(Arrays.asList(address));
         }
         else if(addressList.contains(address)) {
-            throw new RestaurantAlreadyExistsException();
+            throw new AddressAlreadyExistsException();
         }
         else
         {

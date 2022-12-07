@@ -25,13 +25,19 @@ export class AddressComponent implements OnInit {
 
   addAddress()
   {
-    this.favouriteService.addAddress(this.addressForm.value).subscribe(
-      response => {
+    this.favouriteService.addAddress(this.addressForm.value).subscribe({
+      next:(response) => {
         this.snackBar.open("Address Added", "Close", {duration:2000});
         this.addressForm.reset();
         this.route.navigate(['user']);
-      }
-    )
+      },
+      error: (err) => {
+        console.log(err);
+        if (err.status == 409) {
+          this.snackBar.open(err.error.message, 'Close', { duration: 2000 });
+        }
+      },
+  })
   }
 
 }
