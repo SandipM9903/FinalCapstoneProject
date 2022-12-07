@@ -29,7 +29,7 @@
             <div class="info">
                 <div class="name" style="font-size: 20px;">CUISINE NAME : {{s.cuisineName}}</div>
                 <div class="prof" style="font-size: 25px;">{{s.cuisineDescription}}</div>
-                <div class="prof" style="margin-top: 45px; font-size: 25px; color: brown;">RS : {{s.price}}</div>
+                <div class="prof" style="margin-top: 45px; font-size: 25px; color: brown;">{{s.price|currency:"INR":"symbol"}}</div>
                 <div class="divider" style="margin-top: 50px;"></div>
                 <button class="delete" (click)="deleteCuisine(s.cuisineId)">DELETE CUISINE</button>
             </div>

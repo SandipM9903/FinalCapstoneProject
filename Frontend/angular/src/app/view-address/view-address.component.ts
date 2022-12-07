@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { FavouriteService } from '../service/favourite.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { FavouriteService } from '../service/favourite.service';
 export class ViewAddressComponent implements OnInit {
 
   public items: any = [];
-  constructor(private fav: FavouriteService) { 
+  constructor(private fav: FavouriteService,private snackBar: MatSnackBar,) { 
     this.getUserAddress();
   }
 
@@ -29,7 +30,7 @@ export class ViewAddressComponent implements OnInit {
     
     this.fav.removeAddress(houseNo).subscribe(
       res=>{
-        alert("favourite removed");
+        this.snackBar.open('Removed', 'Close', {duration:2000});
         this.getUserAddress();
       }
     );

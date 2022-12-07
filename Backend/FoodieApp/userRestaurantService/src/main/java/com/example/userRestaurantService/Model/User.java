@@ -16,7 +16,6 @@ public class User{
     @Id
     private String emailId;
     private byte[] profilePicture;
-//    private String fileName;
     private String firstName;
     private String lastName;
     private String gender;

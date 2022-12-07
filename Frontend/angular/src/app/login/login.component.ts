@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
           }
         )
         localStorage.setItem('jwt',this.responseData.token);
-        this.snackBar.open("Logged in", "Close");
+        this.snackBar.open("Logged in successful", "Close", {duration:2000});
         this.authService.isUserLoggedIn=true;
       }
     )

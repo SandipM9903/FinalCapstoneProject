@@ -52,7 +52,7 @@ export class RestaurantComponent implements OnInit {
     this.restaurantService.addRestaurant(formData).subscribe(
       response =>
       {
-        this.snackBar.open("Restaurant Added", "Close");
+        this.snackBar.open("Restaurant Added", "Close", {duration:2000});
       }
     )
   }

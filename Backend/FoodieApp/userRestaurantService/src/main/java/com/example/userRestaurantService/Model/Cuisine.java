@@ -17,5 +17,6 @@ public class Cuisine
     private String cuisineName;
     private String cuisineDescription;
     private int price;
+    private int qty;
     private byte[] image;
 }

@@ -292,7 +292,7 @@ input[type="checkbox"] {
 {
     position: absolute;
     bottom: 100px;
-    background-color: #f79f08;
+    background-color: red;
     border: none;
     font-size: 20px;
     padding: 13px 25px;
@@ -303,19 +303,8 @@ input[type="checkbox"] {
 .delete
 {
     position: absolute;
-    bottom: 65px;
+    bottom: 30px;
     background-color: red;
-    border: none;
-    font-size: 20px;
-    padding: 5px 15px;
-    cursor: pointer;
-    color: #fff;
-}
-.add
-{
-    position: absolute;
-    bottom: 10px;
-    background-color: green;
     border: none;
     font-size: 20px;
     padding: 13px 25px;
@@ -343,106 +332,80 @@ input[type="checkbox"] {
     background-position: 0 -25px;
 }
 
-.searchBox
+.btn
 {
-    margin-top: 50px;
-    margin-left: 90vh;
+    color: #fff;
+    flex: 1 auto;
+    margin: 5px;
+    padding: 10px 25px;
+    text-align: center;
+    background-color: darkslategrey;
+    transition: all 0.5s ease-out;
+    cursor: pointer;
+}
+
+.btn
+{
+    background: transparent;
     position: relative;
-    width: 70px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 0.5s;
+    transition: .4s 0s;
 }
 
-.searchBox:hover
-{
-    width: 400px;
-}
-
-.searchBox::before
-{
-    content: '';
+.btn:before,.btn:after, .btn span:before, .btn span:after{
+    content:'';
+    display: block;
+    width: 0;
+    height: 0;
+    background: #fff;
     position: absolute;
+    margin: auto;
+    transition: .4s .4s;
+}
+
+.btn:before,
+.btn span:before
+{
+    height: 1px;
+}
+
+.btn:after,
+.btn span:after
+{
+    width: 1px; 
+}
+
+.btn span:before{
     top: 0;
     left: 0;
-    width: 10px;
-    height: 100%;
-    background: linear-gradient(#fff, #fff, #e3e3e3);
-    z-index: 1;
-    filter: blur(1px);
 }
 
-.searchBox::after
-{
-    content: '';
-    position: absolute;
+.btn:before{
+    bottom: 0;
+    right: 0;
+}
+
+.btn span:after{
+    bottom: 0;
+    left: 0;
+}
+
+.btn:after{
     top: 0;
-    right: -1px;
-    width: 10px;
-    height: 100%;
-    background: #9d9d9d;
-    z-index: 1;
-    filter: blur(1px);
-}
-/* .shadow
-{
-    position: absolute;
-    top: 0;
-    left: -50px;
-    width: calc(100% + 50px);
-    height: 300px;
-    background: linear-gradient(180deg, rgba(0,0,0,0.1), transparent,transparent);
-    transform-origin: top;
-    transform: skew(45deg);
-    pointer-events: none;
+    right: 0;
 }
 
-.shadow::before
-{
-    content: '';
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    background: #111111;
-    z-index: 1;
-} */
+.btn:hover{
+    background-color: #fff;
+    color: #111;transition: .4s .4s;
+}
 
-.searchBox input
+.btn:hover span:before, .btn:hover:before
 {
-    position: relative;
     width: 100%;
+    transition: .4s 0s;
+}
+
+.btn:hover:after, .btn:hover span:after{
     height: 100%;
-    font-size: 20px;
-    border: none;
-    padding: 10px 25px;
-    outline: none;
-    color: #555;
-    background: linear-gradient(#dbdae1, #a3aaba);
-    box-shadow: 5px 5px 5px rgba(0,0,0,0.1),
-    15px 15px 15px rgba(0,0,0,0.1),
-    20px 20px 15px rgba(0,0,0,0.1),
-    30px 30px 15px rgba(0,0,0,0.1),
-    inset 1px 1px 2px #fff;
-}
-
-.searchBox input::placeholder,
-.searchBox input
-{
-    color: transparent;
-}
-
-.searchBox:hover input::placeholder,
-.searchBox:hover input
-{
-    color: #555;
-}
-
-.icon
-{
-    position: absolute;
-    right: 20px;
-    color: #555;
-    cursor: pointer;
+    transition: .4s 0s;
 }

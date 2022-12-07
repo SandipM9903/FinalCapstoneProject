@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Route, Router } from '@angular/router';
 import { FileHandle } from '../model/FileHandle';
 import { RestaurantService } from '../service/restaurant.service';
 
@@ -10,7 +12,8 @@ import { RestaurantService } from '../service/restaurant.service';
   styleUrls: ['./add-cuisine.component.css']
 })
 export class AddCuisineComponent implements OnInit {
-  constructor(private restaurantService:RestaurantService, private sanitizer: DomSanitizer) {
+  constructor(private restaurantService:RestaurantService,
+     private snackBar : MatSnackBar, private sanitizer: DomSanitizer,private router:Router) {
     this.getAllCuisine();
    }
 
@@ -21,7 +24,8 @@ export class AddCuisineComponent implements OnInit {
     cuisineId:new FormControl(''),
     cuisineName:new FormControl(''),
     cuisineDescription:new FormControl(''),
-    price:new FormControl('')
+    price:new FormControl(''),
+    qty:new FormControl('')
   });
   
   cuisineData:any;
@@ -39,20 +43,6 @@ export class AddCuisineComponent implements OnInit {
     )
   }
 
-  // addRestaurant(submitForm:FormGroup)
-  // {
-  //   const restaurant = submitForm.value;
-  //   const formData = new FormData();
-  //   formData.append('restaurant', JSON.stringify(restaurant));
-  //   formData.append('file',this.userFile2);
-  //   this.restaurantService.addRestaurant(formData).subscribe(
-  //     response =>
-  //     {
-  //       this.snackBar.open("Restaurant Added", "Close");
-  //     }
-  //   )
-  // }
-
   addCuisine(submitForm:FormGroup)
   {
     const cuisine = submitForm.value;
@@ -62,9 +52,11 @@ export class AddCuisineComponent implements OnInit {
     this.restaurantService.addCuisine(formData).subscribe(
       response =>
       {
-        alert("Cuisine added")
+        this.snackBar.open("Cuisine Added", "Close", {duration:2000});
       }
+      
     )
+    this.router.navigate(['admin']);
   }
 
   onFileSelect(event:any)

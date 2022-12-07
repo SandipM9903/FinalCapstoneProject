@@ -27,7 +27,7 @@ export class AddressComponent implements OnInit {
   {
     this.favouriteService.addAddress(this.addressForm.value).subscribe(
       response => {
-        this.snackBar.open("Address Added", "Close");
+        this.snackBar.open("Address Added", "Close", {duration:2000});
         this.addressForm.reset();
         this.route.navigate(['user']);
       }

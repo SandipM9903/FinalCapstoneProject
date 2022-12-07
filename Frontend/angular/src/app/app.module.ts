@@ -28,6 +28,10 @@ import { FilterPipe } from './filter.pipe';
 import { FilterNamePipe } from './filter-name.pipe';
 import { AddressComponent } from './address/address.component';
 import { ViewAddressComponent } from './view-address/view-address.component';
+import { CartComponent } from './cart/cart.component';
+import { OrderAddressComponent } from './order-address/order-address.component';
+import { SuccessComponent } from './success/success.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 
@@ -51,7 +55,11 @@ import { ViewAddressComponent } from './view-address/view-address.component';
     FilterPipe,
     FilterNamePipe,
     AddressComponent,
-    ViewAddressComponent
+    ViewAddressComponent,
+    CartComponent,
+    OrderAddressComponent,
+    SuccessComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FileHandle } from '../model/FileHandle';
 import { passwordMatch } from '../Password Check/PasswordMatch';
@@ -25,7 +26,7 @@ export class SignupComponent implements OnInit {
   },
   );
 
-  constructor(private sanitizer: DomSanitizer, private userService:UserService) { }
+  constructor(private sanitizer: DomSanitizer, private userService:UserService, private snackBar : MatSnackBar) { }
 
   ngOnInit(): void {
   }
@@ -49,11 +50,10 @@ export class SignupComponent implements OnInit {
     const formData = new FormData();
     formData.append('commonUser', JSON.stringify(user));
     formData.append('file',this.userFile1);
-    
     this.userService.registerUser(formData).subscribe(
       response =>
       {
-        alert("Added")
+        this.snackBar.open("Signed Up Successfull", "Close", {duration:2000});
       }
     )
   }

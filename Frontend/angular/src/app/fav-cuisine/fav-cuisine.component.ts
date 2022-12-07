@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { FavouriteService } from '../service/favourite.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { FavouriteService } from '../service/favourite.service';
 export class FavCuisineComponent implements OnInit {
   public items: any = [];
   show: boolean = false;
-  constructor(private fav: FavouriteService) {
+  constructor(private fav: FavouriteService, private snackBar : MatSnackBar) {
     this.getUserCuisine();
   }
 
@@ -31,11 +32,9 @@ export class FavCuisineComponent implements OnInit {
     
     this.fav.removeFavItem(cuisineId).subscribe(
       res=>{
-        alert("favourite removed");
+        this.snackBar.open("Address Added", "Close", {duration:2000});
         this.getUserCuisine();
       }
     );
-    console.log(cuisineId)
-    // window.location.reload();
   }
 }

@@ -8,6 +8,7 @@ import { Restaurant } from '../model/restaurant';
 import { AdminService } from '../service/admin.service';
 import { RestaurantService } from '../service/restaurant.service';
 import { FilterPipe } from '../filter.pipe';
+import { CartService } from '../service/cart.service';
 
 @Component({
   selector: 'app-user',
@@ -16,10 +17,12 @@ import { FilterPipe } from '../filter.pipe';
 })
 export class UserComponent implements OnInit {
 
+  itemInCart!:number;
+  
   id:any;
   emailId:any;
   searchText!:string;
-  constructor(private route:ActivatedRoute,private adminService:AdminService,private dialog : MatDialog, private restaurantService:RestaurantService, private fb:FormBuilder, private httpClient : HttpClient, private sanitizer: DomSanitizer) 
+  constructor(private route:ActivatedRoute,private adminService:AdminService,private dialog : MatDialog, private restaurantService:RestaurantService, private fb:FormBuilder, private httpClient : HttpClient, private sanitizer: DomSanitizer, private cart:CartService) 
   {
     this.id=this.route.snapshot.params['id'];
     this.emailId=this.route.snapshot.params['emailId'];
@@ -28,6 +31,13 @@ export class UserComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.cart.numOfItems.subscribe(d=>{
+      this.itemInCart= d.length;
+      console.log(this.itemInCart);
+      
+      
+    })
+
   }
 
   restaurants:Restaurant[]= [];
