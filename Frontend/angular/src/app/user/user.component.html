@@ -2,7 +2,7 @@
     <nav>
         <div class="logo">
             <img src="../../assets/images/logo.jpg" width="60px" height="60px">
-            <a href="" class="header_logo">FoodiE</a>
+            <a href="" class="header_logo">F<span style="color:#f79f08;">oo</span>diE</a>
         </div>
         <input type="checkbox" id="click">
         <label for="click" class="menu-btn">
@@ -15,7 +15,6 @@
             </i>
         </label>
         <ul>
-            <li><img [src]="profileImage" width="40px" height="40px" style="border-radius: 50%; margin-top: -8px;"></li>
             <li style="color: #fff;"><a routerLink="/view-address">{{user.firstName}}</a></li>
             <li><a class="active" routerLink="/user">Home</a></li>
             <li><a routerLink="/fav-cuisine">
@@ -29,6 +28,7 @@
                   </svg>
                 <span class="cart">{{itemInCart}}</span></a></li>
             <li><a routerLink="/login">LogOut</a></li>
+            <li><img [src]="profileImage" width="50px" height="50px" style="border-radius: 50%; margin-top: -8px;"></li>
         </ul>
     </nav>
     <div class="content" style="min-height: 100vh;">
@@ -42,8 +42,8 @@
         </div>
         <div class="card" style="margin-top: 100px;" *ngFor="let s of restaurants | filter:searchText">
             <div class="info">
-                <div class="name" style="font-size: 20px;">RESTAURANT NAME : {{s.restaurantName}}</div>
-                <div class="prof">{{s.restaurantLocation}}</div>
+                <div class="name">{{s.restaurantName|titlecase}}</div>
+                <div class="prof"style="font-size: 20px;">{{s.restaurantLocation|titlecase}}</div>
                 <div class="divider"></div>
                 <button class="view" [routerLink]="['/user-cuisine/'+ s.restaurantId]">View Restaurant</button>
             </div>

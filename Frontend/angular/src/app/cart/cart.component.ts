@@ -28,10 +28,18 @@ export class CartComponent implements OnInit {
   }
 
   onDelete(i:number){
-    this.items.splice(i,1);
+    this.items.splice(+i,1);
+    console.log(i+'is the index');
+    
     this.cart.setCartData(this.items);
-    this.getTotal(this.items);
-    localStorage.clear();
+    this.getTotal(this.cart);
+    console.log(this.cart.getCartData());
+    
+    // localStorage.clear();
+  }
+
+  removeAllCart(){
+    this.cart.removeAllCart();
   }
 
   validateInput(event:any,i:number){

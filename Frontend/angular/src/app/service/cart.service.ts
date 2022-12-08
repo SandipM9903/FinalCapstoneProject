@@ -21,8 +21,6 @@ export class CartService {
     let exist:any;
     if(ls)
     exist = ls.find((i:any)=>{
-      console.log(i.cuisineId);
-      console.log(this.cartItems);
       return i.cuisineId===item.cuisineId
       
     });
@@ -31,11 +29,11 @@ export class CartService {
       exist.qty++;
       this.setCartData(ls);
     }
-
     else{
       if(ls){
         const newData = [...ls,item];
         this.setCartData(newData);
+        return
       }
         this.cartItems.push(item);
         this.setCartData(this.cartItems);
@@ -56,6 +54,7 @@ export class CartService {
   removeAllCart(){
     this.cartItems=[];
     this.numOfItems.next(this.cartItems);
+    localStorage.clear();
   }
 
 }

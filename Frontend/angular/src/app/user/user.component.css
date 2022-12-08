@@ -249,9 +249,16 @@ input[type="checkbox"] {
     height: 450px;
     width: 310px;
     transform: scale(0.7);
+    /* border-color: #5C2E7E; */
     border-radius: 8px;
-    box-shadow: 0 0 80px 1px #4169b0;
+    background-color: #F9F9F9;
+    /* box-shadow: 0 0 80px 1px #4169b0; */
     float: left;
+}
+
+.cart{
+    color: #f79f08;
+    
 }
 
 .info
@@ -263,10 +270,11 @@ input[type="checkbox"] {
 }
 
 .name
-{
+{   
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 10px;
     font-weight: 200;
-    color: #f79f08;
+    color: black;
     position: absolute;
     top: 100px;
     letter-spacing: 2px;
@@ -275,9 +283,9 @@ input[type="checkbox"] {
 .prof
 {
     font-size: 25px;
-    color: blue;
+    color: black;
     position: absolute;
-    top: 200px;
+    top: 240px;
 }
 
 .divider
@@ -292,9 +300,10 @@ input[type="checkbox"] {
 .view
 {
     position: absolute;
-    bottom: 100px;
+    bottom: 50px;
     background-color: #f79f08;
     border: none;
+    border-radius: 8px;
     font-size: 20px;
     padding: 13px 25px;
     cursor: pointer;

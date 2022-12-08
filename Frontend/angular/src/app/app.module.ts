@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -32,6 +32,8 @@ import { CartComponent } from './cart/cart.component';
 import { OrderAddressComponent } from './order-address/order-address.component';
 import { SuccessComponent } from './success/success.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { defineElement } from 'lord-icon-element';
+import lottie from 'lottie-web';
 
 
 
@@ -75,6 +77,11 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents:[]
+  entryComponents:[],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppModule { }
+export class AppModule {
+  constructor() {
+    defineElement(lottie.loadAnimation);
+  }
+ }

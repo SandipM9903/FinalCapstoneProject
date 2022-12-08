@@ -21,6 +21,8 @@ export class UserCuisineComponent implements OnInit {
   user: any;
   profileImage: any;
 
+  itemInCart!:number;
+
   searchTextName!: string;
 
   constructor(
@@ -34,6 +36,7 @@ export class UserCuisineComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     this.getRestaurant();
     console.log(this.id);
+    
   }
 
   cuisineForm = new FormGroup({
@@ -45,7 +48,18 @@ export class UserCuisineComponent implements OnInit {
 
   cuisineData: any;
 
-  ngOnInit(): void {}
+  tempFavList:any
+
+  ngOnInit(): void {
+    this.tempFavList=this.fav.getFavItems();
+
+    this.cart.numOfItems.subscribe(d=>{
+      this.itemInCart= d.length;
+      console.log(this.itemInCart);
+      
+      
+    })
+  }
 
   getRestaurant() {
     this.restaurantService.getRestaurant(this.id).subscribe((data) => {
@@ -78,10 +92,9 @@ export class UserCuisineComponent implements OnInit {
   favList: any;
   public email: any = localStorage.getItem('mailId');
   addToFav(item: any) {
+
     this.fav.addToFaves(item, this.email).subscribe((res) => {
       this.snackBar.open('Added To Favourite!!!!', 'Close', {duration:2000});
-      // this.fav.favItemList=this.responseData.favList;
-      // this.toast.success({summary:"Added To Cart",duration:5000})
     });
     // console.log('added item for ' + this.email);
   }

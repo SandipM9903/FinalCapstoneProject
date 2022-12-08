@@ -94,9 +94,9 @@ input[type="checkbox"] {
         display: block;
     }
 
-    #click:checked~.menu-btn i:before {
-        /* content: "\f00d"; */
-    }
+    /* #click:checked~.menu-btn i:before {
+        content: "\f00d";
+    } */
 
     nav ul {
         position: fixed;
@@ -161,7 +161,7 @@ input[type="checkbox"] {
 }
 
 .content div {
-    font-size: 40px;
+    font-size: 20px;
     font-weight: 700;
 }
 

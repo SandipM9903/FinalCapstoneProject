@@ -21,6 +21,16 @@ export class FavouriteService {
 
   }
 
+  public FavItemsTemp: any = [];
+
+  setFavItems(items:any){
+    this.FavItemsTemp=items;
+  }
+
+  getFavItems(){
+    return this.FavItemsTemp;
+  }
+
   addAddress(addressobj:any)
   {
     return this.http.post(this.baseurl + "addAddress/" + this.emailId ,addressobj);

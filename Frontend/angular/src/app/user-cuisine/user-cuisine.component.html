@@ -1,8 +1,9 @@
 <body>
+    <script src="https://cdn.lordicon.com/fudrjiwc.js"></script>
     <nav>
         <div class="logo">
             <img src="../../assets/images/logo.jpg" width="60px" height="60px">
-            <a href="" class="header_logo">FoodiE</a>
+            <a href="" class="header_logo">F<span style="color:#f79f08;">oo</span>diE</a>
         </div>
         <input type="checkbox" id="click">
         <label for="click" class="menu-btn">
@@ -25,7 +26,7 @@
             <li><a routerLink="/cart">
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
                     <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
-                  </svg>
+                  </svg><span class="cart">{{itemInCart}}</span>
             </a></li>
             <li><a routerLink="/login">LogOut</a></li>
         </ul>
@@ -40,12 +41,25 @@
         </div>
         <div class="card" *ngFor="let s of data.cuisineList| filterName:searchTextName" style="margin-top: 80px;">
             <div class="info">
-                <div class="name" style="font-size: 20px;">{{s.cuisineName}}</div>
-                <div class="prof" style="font-size: 25px;">{{s.cuisineDescription}}</div>
+                <div class="name" style="font-size: 30px;">{{s.cuisineName|titlecase}}</div>
+                <div class="prof" style="font-size: 20px;">{{s.cuisineDescription|titlecase}}</div>
                 <div class="prof" style="margin-top: 45px; font-size: 25px; color: brown;"> {{s.price|currency:"INR":"symbol"}}</div>
                 <div class="divider" style="margin-top: 50px;"></div>
-                <button class="delete" (click)="addToFav(s)">Add favourite</button>
-                <button class="add" (click)="addToCart(s)">Add to Cart</button>
+                <i class="delete" (click)="addToFav(s)"><script src="https://cdn.lordicon.com/fudrjiwc.js"></script>
+                    <lord-icon
+                        src="https://cdn.lordicon.com/rjzlnunf.json"
+                        trigger="hover"
+                        colors="primary:#121331,secondary:#e88c30"
+                        stroke="80"
+                        style="width:80px;height:80px">
+                    </lord-icon></i>
+                <i class="add" (click)="addToCart(s)"><script src="https://cdn.lordicon.com/fudrjiwc.js"></script>
+                    <lord-icon
+                        src="https://cdn.lordicon.com/slkvcfos.json"
+                        trigger="hover"
+                        colors="primary:#121331,secondary:#e88c30"
+                        style="width:80px;height:80px">
+                    </lord-icon></i>
 
             </div>
             <img class="photo" [src]="'data:image/jpeg;base64,' + s.image">

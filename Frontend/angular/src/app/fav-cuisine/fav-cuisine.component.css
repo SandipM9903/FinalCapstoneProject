@@ -94,9 +94,9 @@ input[type="checkbox"] {
         display: block;
     }
 
-    #click:checked~.menu-btn i:before {
-        /* content: "\f00d"; */
-    }
+    /* #click:checked~.menu-btn i:before {
+        content: "\f00d";
+    } */
 
     nav ul {
         position: fixed;
@@ -249,8 +249,13 @@ input[type="checkbox"] {
     width: 310px;
     transform: scale(0.7);
     border-radius: 8px;
-    box-shadow: 0 0 80px 1px #4169b0;
+    /* box-shadow: 0 0 80px 1px #4169b0; */
     float: left;
+}
+
+.cart{
+    color: #f79f08;
+    
 }
 
 .info
@@ -292,7 +297,7 @@ input[type="checkbox"] {
 {
     position: absolute;
     bottom: 100px;
-    background-color: red;
+    background-color: #f79f08;
     border: none;
     font-size: 20px;
     padding: 13px 25px;
@@ -303,15 +308,27 @@ input[type="checkbox"] {
 .delete
 {
     position: absolute;
-    bottom: 30px;
-    background-color: red;
+    bottom: 8px;
+    left:5px;
+    /* background-color: red; */
     border: none;
     font-size: 20px;
-    padding: 13px 25px;
+    /* padding: 5px 15px; */
     cursor: pointer;
     color: #fff;
 }
-
+.add
+{
+    position: absolute;
+    bottom: 8px;
+    right:5px;
+    /* background-color: green; */
+    border: none;
+    font-size: 20px;
+    /* padding: 13px 25px; */
+    cursor: pointer;
+    color: #fff;
+}
 .photo
 {
     height: 100%;
