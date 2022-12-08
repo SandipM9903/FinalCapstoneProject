@@ -32,19 +32,23 @@
         </ul>
     </nav>
     <div class="content" style="min-height: 100vh;">
-        <div class="searchBox">
-            <input [(ngModel)]="searchText" placeholder="Search by city name....">
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-search icon"
-                viewBox="0 0 16 16">
-                <path
-                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-            </svg>
+        <div class="boxContainer">
+            <table class="elementsContainer">
+                <tr>
+                    <td>
+                        <input [(ngModel)]="searchText"  placeholder="Search by city name...." class="search" style="background-color: #111;">
+                    </td>
+                    <a><svg xmlns="http://www.w3.org/2000/svg" style="color: #f79f08;" width="26" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                      </svg></a>
+                </tr>
+            </table>
         </div>
-        <div class="card" style="margin-top: 100px;" *ngFor="let s of restaurants | filter:searchText">
+        <div class="card" style="margin-top: 50px;" *ngFor="let s of restaurants | filter:searchText">
             <div class="info">
-                <div class="name">{{s.restaurantName|titlecase}}</div>
-                <div class="prof"style="font-size: 20px;">{{s.restaurantLocation|titlecase}}</div>
-                <div class="divider"></div>
+                <div class="name" style="font-size: 40px;">{{s.restaurantName|titlecase}}</div>
+                <div class="prof"style="font-size: 30px;" style="color: red;">{{s.restaurantLocation|titlecase}}</div>
+                <div class="divider" style="margin-top: 50px;"></div>
                 <button class="view" [routerLink]="['/user-cuisine/'+ s.restaurantId]">View Restaurant</button>
             </div>
             <img class="photo" [src]="'data:image/jpeg;base64,' + s.picByte">
