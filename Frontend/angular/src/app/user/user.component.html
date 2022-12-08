@@ -44,7 +44,7 @@
                 </tr>
             </table>
         </div>
-        <div class="card" style="margin-top: 50px;" *ngFor="let s of restaurants | filter:searchText">
+        <div class="card" style="margin-top: 40px;" *ngFor="let s of restaurants | filter:searchText">
             <div class="info">
                 <div class="name" style="font-size: 40px;">{{s.restaurantName|titlecase}}</div>
                 <div class="prof"style="font-size: 30px;" style="color: red;">{{s.restaurantLocation|titlecase}}</div>

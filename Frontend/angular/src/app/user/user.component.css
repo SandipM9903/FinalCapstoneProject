@@ -246,6 +246,7 @@ input[type="checkbox"] {
 
 .card
 {
+    margin-left: 15px;
     height: 450px;
     width: 310px;
     transform: scale(0.7);
