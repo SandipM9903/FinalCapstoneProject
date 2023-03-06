@@ -270,7 +270,7 @@ input[type="checkbox"] {
 {
     font-size: 10px;
     font-weight: 200;
-    color: #f79f08;
+    /* color: #f79f08; */
     position: absolute;
     top: 100px;
     letter-spacing: 2px;

@@ -302,3 +302,35 @@ form .button input:hover
 {
     font-size: 25px;
 }
+
+label {
+    display: block; /* Make label a block element */
+    margin-bottom: 0.5rem; /* Add some spacing below label */
+    font-weight: bold; /* Make label text bold */
+  }
+  
+  /* Style the select element */
+  select {
+    display: block; /* Make select a block element */
+    padding: 0.5rem; /* Add some padding around select */
+    font-size: 1rem; /* Set font size for select */
+    border: 1px solid #ccc; /* Add a border around select */
+    border-radius: 4px; /* Round the corners of the border */
+    background-color: #fff; /* Set background color for select */
+  }
+  
+  /* Style the select when it is hovered over */
+  select:hover {
+    border-color: #999; /* Change border color when hovered over */
+  }
+  
+  /* Style the select when it is focused */
+  select:focus {
+    outline: none; /* Remove outline when focused */
+    box-shadow: 0 0 5px #999; /* Add a box shadow when focused */
+  }
+  
+  /* Style the select when it is disabled */
+  select:disabled {
+    opacity: 0.5; /* Reduce opacity when disabled */
+  }

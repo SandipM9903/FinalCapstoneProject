@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { AdminService } from '../service/admin.service';
 import { RestaurantService } from '../service/restaurant.service';
@@ -17,7 +18,8 @@ export class CuisineComponent implements OnInit {
   user:any;
   profileImage:any;
 
-  constructor(private adminService:AdminService,private route:ActivatedRoute, private restaurantService:RestaurantService) {
+  constructor(private adminService:AdminService,
+    private snackBar : MatSnackBar,private route:ActivatedRoute, private restaurantService:RestaurantService) {
     this.id=this.route.snapshot.params['id'];
     this.getRestaurant();
     console.log(this.id);
@@ -51,7 +53,7 @@ export class CuisineComponent implements OnInit {
      this.restaurantService.deleteCuisine(cuisineId).subscribe(
        data=>
        {
-         alert("Deleted");
+        this.snackBar.open("Cuisine Deleted", "Close", {duration:2000});
          this.getRestaurant();
        }
      )

@@ -30,11 +30,43 @@
 </div>
 
 <ng-container *ngIf="items.length>0">
+    <!-- table headings -->
+    <div class="cart">
+        <div>
+        <strong>No</strong>
+        </div>
+        <div class="imgBox">
+           
+        </div>
+        <div class="desc">
+            <strong>Item Name</strong>
+        </div>
+        <div></div>
+        <div class="price">
+            <strong>Price</strong>
+        </div>
+        <div class="qty">
+            <strong>Quantity</strong>
+        </div>
+        <div class="subtotal">
+            <strong>Subtotal</strong>
+        </div>
+        <div>
+       
+        </div>
 
+
+    </div>
+
+
+    <!-- cart items -->
     <div class="cart" *ngFor="let item of items; index as i">
         <!-- <i class="fa fa-trash text-danger" aria-hidden="true" (click)="onDelete(i)"></i> -->
+        <div>
+            <strong>{{i+1}}.</strong>
+        </div>
         <div class="imgBox">
-            <img class="img" [src]="'data:image/jpeg;base64,'+item.image">
+            <img style="border-radius: 80px;" class="img" [src]="'data:image/jpeg;base64,'+item.image">
         </div>
         <div class="desc">
             {{item.cuisineName}}
@@ -55,8 +87,9 @@
     </div>
 
     <div class="checkout">
+        <button class="btn btn-info" routerLink="/user">Add items</button>
         <button class="btn btn-warning" (click)="removeAllCart()">Clear Cart</button>
-        <div>Total</div>
+        <div><strong>Total bill</strong></div>
         <b>{{total |currency:"INR":"symbol"}}</b>
 
         <button class="btn btn-success" routerLink="/order-address">Place Order</button>

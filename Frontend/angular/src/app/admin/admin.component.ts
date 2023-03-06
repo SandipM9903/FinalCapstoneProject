@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Restaurant } from '../model/restaurant';
@@ -18,7 +19,8 @@ export class AdminComponent implements OnInit {
 
   id:any;
   emailId:any;
-  constructor(private adminService:AdminService, private route:ActivatedRoute ,private dialog : MatDialog, private restaurantService:RestaurantService, private fb:FormBuilder, private httpClient : HttpClient, private sanitizer: DomSanitizer) 
+  constructor(private adminService:AdminService,
+    private snackBar : MatSnackBar, private route:ActivatedRoute ,private dialog : MatDialog, private restaurantService:RestaurantService, private fb:FormBuilder, private httpClient : HttpClient, private sanitizer: DomSanitizer) 
   {
     this.id=this.route.snapshot.params['id'];
     this.emailId=this.route.snapshot.params['emailId'];
@@ -27,6 +29,7 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getAllRestaurants();
   }
 
   restaurants:Restaurant[]= [];
@@ -55,7 +58,7 @@ export class AdminComponent implements OnInit {
     this.restaurantService.deleteRestaurant(restaurantId).subscribe(
       data=>
       {
-        alert("Deleted");
+        this.snackBar.open("Restaurant Deleted", "Close", {duration:2000});
         this.getAllRestaurants();
       }
     )

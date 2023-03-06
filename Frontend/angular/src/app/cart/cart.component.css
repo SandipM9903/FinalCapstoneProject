@@ -189,7 +189,7 @@ input[type="checkbox"] {
 }
 .checkout{
     display: grid;
-    justify-content: end;
+    justify-content:end;
     grid-template-columns: repeat(2,8rem);
     gap:1rem;
     margin-top: 1rem;

@@ -93,10 +93,10 @@ input[type="checkbox"] {
     nav .menu-btn i {
         display: block;
     }
-
+/* 
     #click:checked~.menu-btn i:before {
-        /* content: "\f00d"; */
-    }
+        content: "\f00d";
+    } */
 
     nav ul {
         position: fixed;
@@ -249,7 +249,7 @@ input[type="checkbox"] {
     width: 310px;
     transform: scale(0.7);
     border-radius: 8px;
-    box-shadow: 0 0 80px 1px #4169b0;
+    /* box-shadow: 0 0 80px 1px #4169b0; */
     float: left;
 }
 

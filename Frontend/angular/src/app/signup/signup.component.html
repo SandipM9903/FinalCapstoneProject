@@ -60,14 +60,20 @@
                     </div>
                     <div class="card-box">
                         <span class="details">Gender</span>
-                        <input type="text" placeholder="Enter your Gender" formControlName="gender"
-                            class="form-control">
+                        <!-- <input type="text" placeholder="Enter your Gender" formControlName="gender"
+                            class="form-control"> -->
+                        <select id="gender" name="gender" formControlName="gender" class="form-control">
+                            <option value="" selected disabled>Select Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
                         <small *ngIf="profileForm.get('gender')?.touched && profileForm.get('gender')?.invalid"
                             style="color:red;font-size: large;">Please enter your Gender</small>
                     </div>
                     <div class="card-box">
                         <span class="details">Password</span>
-                        <input type="password" placeholder="Password" formControlName="password" class="form-control">
+                        <input type="password" placeholder="Password" formControlName="password" class="form-control" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
                         <small *ngIf="profileForm.get('password')?.touched && profileForm.get('password')?.invalid"
                             style="color:red;font-size: large;">Please enter Valid Password</small>
                     </div>

@@ -332,6 +332,11 @@ input[type="checkbox"] {
     background-position: 0 -25px;
 }
 
+.carousel-caption{
+    width: 45%;
+    margin-left: 13%;
+}
+
 
 
 .main-div
